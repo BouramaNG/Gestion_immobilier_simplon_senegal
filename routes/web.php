@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
 Route::middleware(['auth','role:admin'])->group(function () {
 
     Route::get('admin/dashboard', [AdminController::class,'AdminDashboard'])->name('admin.dashboard');
@@ -40,6 +41,11 @@ Route::middleware(['auth','role:admin'])->group(function () {
 
     Route::get('agence/dashboard', [AgenceController::class,'AgenceDashboard'])->name('agence.dashboard');
 });
-Route::get('ajout_bien', [BienController::class,'AjoutBien'])->name('ajout.bien');
-Route::get('liste_bien', [BienController::class,'ListeBien'])->name('liste.bien');
+
+Route::get('ajout_bien', [BienController::class,'index']);
+Route::post('ajout_bien', [BienController::class,'store']);
+Route::get('liste_bien/{id}', [BienController::class,'delete']);
+Route::get('liste_bien', [BienController::class,'show'])->name('liste.bien');
+Route::get('modifier/{id}', [BienController::class,'edit']);
+Route::put('modifier/{id}', [BienController::class, 'update']);
 require __DIR__.'/auth.php';
