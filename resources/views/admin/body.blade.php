@@ -1,3 +1,5 @@
+@extends('admin.admindashboard')
+@section('content')
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
@@ -673,3 +675,4 @@
 </div>
 <!-- main-panel ends -->
 </div>
+@endsection

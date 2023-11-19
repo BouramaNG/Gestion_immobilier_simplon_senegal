@@ -285,7 +285,7 @@
             <span><i class="fa fa-tree" aria-hidden="true"></i>  Jardin</span>
             <span><i class="fa fa-tint" aria-hidden="true"></i>   2 SDB</span>
           </figure>
-          <a href="#" class="card-link"><i class="fa fa-eye m-r-1" aria-hidden="true"></i>Voir</a>
+          <a href="{{ route('frontend.Ajoutcommentaire',['id'=>1]) }}"  class="card-link"><i class="fa fa-eye m-r-1" aria-hidden="true"></i>Voir</a>
         </div>
       </article>
     </div>

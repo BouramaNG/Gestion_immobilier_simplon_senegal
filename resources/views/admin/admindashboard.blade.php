@@ -10,7 +10,8 @@
         <!-- partial:partials/_navbar.html -->
       @include('admin.sidebar')
         <!-- partial -->
-      @include('admin.body')
+      {{-- <!-- @include('admin.body') --> --}}
+      @yield('content')
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->

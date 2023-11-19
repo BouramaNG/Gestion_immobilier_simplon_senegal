@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Agence;
 use App\Http\Controllers\AgenceController;
 use App\Http\Controllers\BienController;
+use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('frontend.acceuil');
 });
+Route::get('Ajoutcommentaire/{id}', [CommentaireController::class,'Ajoutcommentaire'])->name('frontend.Ajoutcommentaire');
+Route::Post('Ajoutercommentaire/{id}', [CommentaireController::class,'Ajoutercommentaire'])->name('frontend.Ajoutercommentaire');
+Route::get('listercommentaire', [CommentaireController::class,'Listercommentaire'])->name('admin.VoirCommentaire');
+Route::delete('listercommentaire/{id}', [CommentaireController::class,'destroy']);
+// Route::get('listercommentaire', [CommentaireController::class,'show']);
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -34,7 +42,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth','role:admin'])->group(function () {
 
-    Route::get('admin/dashboard', [AdminController::class,'AdminDashboard'])->name('admin.dashboard');
+    Route::get('/dashboard', [AdminController::class,'AdminDashboard'])->name('admin.dashboard');
 });
 Route::middleware(['auth','role:admin'])->group(function () {
 
@@ -42,4 +50,6 @@ Route::middleware(['auth','role:admin'])->group(function () {
 });
 Route::get('ajout_bien', [BienController::class,'AjoutBien'])->name('ajout.bien');
 Route::get('liste_bien', [BienController::class,'ListeBien'])->name('liste.bien');
+
 require __DIR__.'/auth.php';
+
