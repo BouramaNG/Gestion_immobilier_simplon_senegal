@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
+
 Route::prefix('user')->middleware(['auth','role:admin'])->group(function(){
     Route::get('/dashboard', [AdminController::class,'AdminDashboard'])->name('admin.dashboard');
     Route::get('add_admin', [AdminController::class,'AdAdmin'])->name('add.admin');
