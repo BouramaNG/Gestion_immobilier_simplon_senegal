@@ -85,30 +85,38 @@
         <a class="nav-link" href="presentation.html">Présentation</a>
       </li>
       @if (Route::has('login'))
-            @auth
-                <li class="nav-item m-x-1">
-                    <form action="{{ route('logout') }}" method="post">
-                        @csrf 
-                        <button type="submit" class="btn btn-warning">Deconnexion</button>
-                    </form>
-                </li>
-            @else
-                @if ($userInactive == 'active')
-                    <li class="nav-item m-x-1">
-                        <button class="btn btn-primary"> <a style="color: white;" href="{{ route('register') }}">Inscription</a></button>
-                    </li>
-                    <li class="nav-item m-x-1">
-                        <button class="btn btn-danger"> <a style="color: white;" href="{{ route('login') }}">Connexion</a></button>
-                    </li>
-                @else
-                    <li class="nav-item m-x-1">
-                        <div class="alert alert-danger">
-                            Votre compte est désactivé. Veuillez contacter Naruto 7emeDuNom Email:Uzumaki@gmail.com.
-                        </div>
-                    </li>
-                @endif
-            @endauth
+    @auth
+        @if (auth()->user()->status == 'active')
+            <li class="nav-item m-x-1">
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf 
+                    <button type="submit" class="btn btn-warning">Deconnexion</button>
+                </form>
+            </li>
+        @else
+            <li class="nav-item m-x-1">
+                <div class="alert alert-danger">
+                    Votre compte est désactivé. Veuillez contacter Naruto 7emeDuNom Email: Uzumaki@gmail.com.
+                </div>
+            </li>
         @endif
+    @else
+        @if (isset($userInactive) && $userInactive == 'inactive')
+            <li class="nav-item m-x-1">
+                <div class="alert alert-danger">
+                    Votre compte est désactivé. Veuillez contacter Naruto 7emeDuNom Email: Uzumaki@gmail.com.
+                </div>
+            </li>
+        @else
+            <li class="nav-item m-x-1">
+                <button class="btn btn-primary"> <a style="color: white;" href="{{ route('register') }}">Inscription</a></button>
+            </li>
+            <li class="nav-item m-x-1">
+                <button class="btn btn-danger"> <a style="color: white;" href="{{ route('login') }}">Connexion</a></button>
+            </li>
+        @endif
+    @endauth
+@endif
     </ul>
   </div>
 

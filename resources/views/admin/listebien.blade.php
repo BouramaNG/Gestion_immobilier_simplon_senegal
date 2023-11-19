@@ -480,7 +480,7 @@
                                             <td>{{ $produit->status }}</td>
                                             <td>{{ $produit->date }}</td>
                                             <td>
-                                                <form action="/liste_bien/{{$produit->id}}" method="POST">
+                                                <form action="{{ route('bien.delete', ['id' => $produit->id]) }}" method="POST">
                                                     @method('DELETE')
                                                     @csrf
                                                     <button type="submit" class="btn btn-danger">

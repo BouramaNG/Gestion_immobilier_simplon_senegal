@@ -51,7 +51,7 @@ Route::get('/',[AdminController::class,'Desactivation'])->name('desactiver');
 //route pour les biens 
 Route::get('ajout_bien', [BienController::class,'index']);
 Route::post('ajout_bien', [BienController::class,'store']);
-Route::get('liste_bien/{id}', [BienController::class,'delete']);
+Route::delete('liste_bien/{id}', [BienController::class, 'delete'])->name('bien.delete');
 Route::get('liste_bien', [BienController::class,'show'])->name('liste.bien');
 Route::get('modifier/{id}', [BienController::class,'edit']);
 Route::put('modifier/{id}', [BienController::class, 'update']);
