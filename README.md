@@ -64,3 +64,42 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+//---------------------------
+ <div class="main-panel">
+                <div class="content-wrapper">
+                    <legend>Listes des bien</legend>
+                    <div class="row ">
+                        <div class="col-10 grid-margin">
+                            <div class="row">
+                                @foreach ($bien as $produit)
+                                    <div class="card col-md-3 mb-3 my-2 ">
+                                        <img src="{{ asset('storage/' . $produit->image) }}" class="card-img-top"
+                                            alt="bien-avatar">
+                                        <div class="card-body">
+                                            <p class="card-text">{{ $produit->description }}</p>
+                                        </div>
+                                        <div class="mb-3">
+                                        <form action="/liste_bien/{{$produit->id}}" method="DELETE">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="fas fa-trash"></i> Supprimer
+                                            </button>
+                                        </form>
+                                        <br>
+                                        <a href="/modifier/{{$produit->id}}">
+                                            <button type="submit" class="btn btn-danger " value="{{$produit->id}}">
+                                                <i class="fas fa-trash"></i> modifier
+                                            </button>
+                                        </a>
+                                    </div> 
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
