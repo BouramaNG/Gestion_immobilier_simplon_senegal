@@ -85,22 +85,30 @@
         <a class="nav-link" href="presentation.html">Présentation</a>
       </li>
       @if (Route::has('login'))
-      @auth
-      <li class="nav-item m-x-1">
-     <form action="{{route('logout')}}" method="post">
-     @csrf 
-     <button type="submit" class="btn btn-warning">Deconnexion</button>
-     </form>
-      </li>
-      @else
-      <li class="nav-item m-x-1">
-       <button class="btn btn-primary"> <a style="color: white;" href="{{route('register')}}">Incription</a></button>
-      </li>
-      <li class="nav-item m-x-1">
-      <button class="btn btn-danger"> <a style="color: white;" href="{{route('login')}}">Connexion</a></button>
-      </li>
-      @endauth
-      @endif
+            @auth
+                <li class="nav-item m-x-1">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf 
+                        <button type="submit" class="btn btn-warning">Deconnexion</button>
+                    </form>
+                </li>
+            @else
+                @if ($userInactive == 'active')
+                    <li class="nav-item m-x-1">
+                        <button class="btn btn-primary"> <a style="color: white;" href="{{ route('register') }}">Inscription</a></button>
+                    </li>
+                    <li class="nav-item m-x-1">
+                        <button class="btn btn-danger"> <a style="color: white;" href="{{ route('login') }}">Connexion</a></button>
+                    </li>
+                @else
+                    <li class="nav-item m-x-1">
+                        <div class="alert alert-danger">
+                            Votre compte est désactivé. Veuillez contacter Naruto 7emeDuNom Email:Uzumaki@gmail.com.
+                        </div>
+                    </li>
+                @endif
+            @endauth
+        @endif
     </ul>
   </div>
 
@@ -220,75 +228,33 @@
 
 <!-- Start the card content -->
   <div class="row">
-
+@foreach($biens as $bien)
     <div class="col-xs-12 col-sm-6 col-md-4">
       <article class="card">
         <div class="card-block text-xs-center head">
-          <h4 class="card-title">Belle maison</h4>
-          <h6 class="card-subtitle">Comines, 210 000 euros</h6>
+          <h4 class="card-title">Bien: {{$bien->nom}}</h4>
+          <h6 class="card-subtitle">Address: {{$bien->addresse}}</h6>
         </div>
         <figure>
-          <img src="img/house_small.jpg" class="img-fluid hidden-sm-up" alt="maison bleu à vendre">
-          <img src="img/house_medium.jpg" class="img-fluid hidden-xs-down hidden-lg-up" alt="maison bleue à vendre">
-          <img src="img/house_large.jpg" class="img-fluid hidden-md-down" alt="maison bleu à vendre">
+          <img src="product/{{$bien->image}}" class="img-fluid hidden-sm-up" alt="maison bleu à vendre">
+          <img src="product/{{$bien->image}}" class="img-fluid hidden-xs-down hidden-lg-up" alt="maison bleue à vendre">
+          <img src="product/{{$bien->image}}" class="img-fluid hidden-md-down" alt="maison bleu à vendre">
         </figure>
         <div class="card-block text-xs-center">
-          <p class="card-text">Située dans un quartier calme et arboré, cette maison avec ses 4 chambres est idéale pour une famille</p>
+          <p class="card-text">{{$bien->description}}</p>
           <figure class="description">
-            <span><i class="fa fa-bed" aria-hidden="true"></i>  3 chambres</span>
-            <span><i class="fa fa-tree" aria-hidden="true"></i>  Jardin</span>
-            <span><i class="fa fa-tint" aria-hidden="true"></i>   2 SDB</span>
+            <span><i class="fa fa-bed" aria-hidden="true"></i>{{$bien->categorie}}</span>
+            <span><i class="fa fa-tree" aria-hidden="true"></i> {{$bien->status}}</span>
+            <span><i class="fa fa-tint" aria-hidden="true"></i>{{$bien->date}}</span>
           </figure>
           <a href="#" class="card-link"><i class="fa fa-eye m-r-1" aria-hidden="true"></i>Voir</a>
         </div>
       </article>
     </div>
+@endforeach
+   
 
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <article class="card">
-        <div class="card-block text-xs-center head">
-          <h4 class="card-title">Belle maison</h4>
-          <h6 class="card-subtitle">Comines, 210 000 euros</h6>
-        </div>
-        <figure>
-          <img src="img/house_small.jpg" alt="maison bleu à vendre" class="img-fluid hidden-sm-up">
-          <img src="img/house_medium.jpg" alt="maison bleue à vendre" class="img-fluid hidden-xs-down hidden-lg-up">
-          <img src="img/house_large.jpg" alt="maison bleu à vendre" class="img-fluid hidden-md-down">
-        </figure>
-        <div class="card-block text-xs-center">
-          <p class="card-text">Située dans un quartier calme et arboré, cette maison avec ses 4 chambres est idéale pour une famille</p>
-          <figure class="description">
-            <span><i class="fa fa-bed" aria-hidden="true"></i>  3 chambres</span>
-            <span><i class="fa fa-tree" aria-hidden="true"></i>  Jardin</span>
-            <span><i class="fa fa-tint" aria-hidden="true"></i>   2 SDB</span>
-          </figure>
-          <a href="#" class="card-link"><i class="fa fa-eye m-r-1" aria-hidden="true"></i>Voir</a>
-        </div>
-      </article>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <article class="card">
-        <div class="card-block text-xs-center head">
-          <h4 class="card-title">Belle maison</h4>
-          <h6 class="card-subtitle">Comines, 210 000 euros</h6>
-        </div>
-        <figure>
-          <img src="img/house_small.jpg" alt="maison bleu à vendre" class="img-fluid hidden-sm-up">
-          <img src="img/house_medium.jpg" alt="maison bleue à vendre" class="img-fluid hidden-xs-down hidden-lg-up">
-          <img src="img/house_large.jpg" alt="maison bleu à vendre" class="img-fluid hidden-md-down">
-        </figure>
-        <div class="card-block text-xs-center">
-          <p class="card-text">Située dans un quartier calme et arboré, cette maison avec ses 4 chambres est idéale pour une famille</p>
-          <figure class="description">
-            <span><i class="fa fa-bed" aria-hidden="true"></i>  3 chambres</span>
-            <span><i class="fa fa-tree" aria-hidden="true"></i>  Jardin</span>
-            <span><i class="fa fa-tint" aria-hidden="true"></i>   2 SDB</span>
-          </figure>
-          <a href="#" class="card-link"><i class="fa fa-eye m-r-1" aria-hidden="true"></i>Voir</a>
-        </div>
-      </article>
-    </div>
+   
 
   </div>
 
@@ -314,34 +280,7 @@
     <h4>Lille Immo en bref</h4>
     <p>Lille Immo c'est 5 agences réparties au travers de la métropole et toujours à votre service. Vous pouvez contacter l'agence la plus proche de chez vous via la rubrique nos agences ou contacter notre siège au 03 20 ## ## ##</p>
     <!-- Footer navigation -->
-    <nav class="row">
-      <ul class="nav navbar-nav text-xs-center col-xs-9">
-        <li class="nav-item m-x-1">
-          <a class="nav-link" href="index.html">Accueil<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item m-x-1">
-          <a class="nav-link" href="achat.html">Achat</a>
-        </li>
-        <li class="nav-item m-x-1">
-          <a class="nav-link" href="location.html">Location</a>
-        </li>
-        <li class="nav-item m-x-1">
-          <a class="nav-link" href="presentation.html">Présentation</a>
-        </li>
-        <li class="nav-item m-x-1">
-          <a class="nav-link" href="agences.html">Nos agences</a>
-        </li>
-      </ul>
-      <!-- Social medias icons -->
-      <figure class="col-xs-3 m-t-1">
-        <a href="#">
-          <i class="fa fa-facebook-official fa-2x m-r-1" aria-hidden="true"></i>
-        </a>
-        <a href="#">
-          <i class="fa fa-twitter fa-2x m-r-2" aria-hidden="true"></i>
-        </a>
-      </figure>
-    </nav>
+    
     <!-- Copyright paragraphe -->
     <p>Lille Immo 2016. &copy;Une réalisation <a href="https://thomgo.github.io/portfolio/" target="_blank">Thomas Gossart</a></p>
   </section>

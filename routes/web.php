@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use App\Models\Bien;
 use App\Http\Controllers\Agence;
-use App\Http\Controllers\AgenceController;
-use App\Http\Controllers\BienController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BienController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AgenceController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,4 +43,17 @@ Route::middleware(['auth','role:admin'])->group(function () {
 });
 Route::get('ajout_bien', [BienController::class,'AjoutBien'])->name('ajout.bien');
 Route::get('liste_bien', [BienController::class,'ListeBien'])->name('liste.bien');
+Route::get('liste_user',[AdminController::class,'ListeUser'])->name('liste.user');
+Route::post('/inactive_user/{id}',[AdminController::class,'InactiveUser'])->name('inactive.user');
+Route::get('/',[AdminController::class,'Desactivation'])->name('desactiver');
+
+
+//route pour les biens 
+Route::get('ajout_bien', [BienController::class,'index']);
+Route::post('ajout_bien', [BienController::class,'store']);
+Route::get('liste_bien/{id}', [BienController::class,'delete']);
+Route::get('liste_bien', [BienController::class,'show'])->name('liste.bien');
+Route::get('modifier/{id}', [BienController::class,'edit']);
+Route::put('modifier/{id}', [BienController::class, 'update']);
+
 require __DIR__.'/auth.php';

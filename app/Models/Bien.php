@@ -2,12 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\User;
-use App\Models\Propertie;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Bien extends Model
 {
     use HasFactory;
 
@@ -16,8 +14,8 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function property()
+    public function comments()
     {
-        return $this->belongsTo(Bien::class);
+        return $this->hasMany(Comment::class);
     }
 }
