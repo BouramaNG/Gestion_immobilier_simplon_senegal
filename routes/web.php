@@ -7,6 +7,7 @@ use App\Http\Controllers\BienController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgenceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CommentaireController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,7 @@ Route::put('modifier/{id}', [BienController::class, 'update']);
 // web.php
 
 Route::post('/search', [AdminController::class, 'search'])->name('search');
-
+Route::get('/details/{id}', [BienController::class, 'details'])->name('bien.details');
+Route::post('/comment/store', [CommentaireController::class, 'store'])->name('comment.store');
 
 require __DIR__.'/auth.php';

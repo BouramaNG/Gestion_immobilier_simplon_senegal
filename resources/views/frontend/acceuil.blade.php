@@ -230,7 +230,8 @@
             <span><i class="fa fa-tree" aria-hidden="true"></i> {{$bien->status}}</span>
             <span><i class="fa fa-tint" aria-hidden="true"></i>{{$bien->date}}</span>
           </figure>
-          <a href="#" class="card-link"><i class="fa fa-eye m-r-1" aria-hidden="true"></i>Voir</a>
+          <a href="{{ route('bien.details', $bien->id) }}" class="card-link"><i class="fa fa-eye m-r-1" aria-hidden="true"></i>Voir</a>
+
         </div>
       </article>
     </div>

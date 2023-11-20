@@ -112,4 +112,11 @@ class BienController extends Controller
 
 
 }
+public function details($id)
+{
+    $bien = Bien::find($id);
+
+    return view('frontend.details', compact('bien'));
+}
+
 }
