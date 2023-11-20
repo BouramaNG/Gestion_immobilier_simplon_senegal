@@ -55,5 +55,9 @@ Route::delete('liste_bien/{id}', [BienController::class, 'delete'])->name('bien.
 Route::get('liste_bien', [BienController::class,'show'])->name('liste.bien');
 Route::get('modifier/{id}', [BienController::class,'edit']);
 Route::put('modifier/{id}', [BienController::class, 'update']);
+// web.php
+
+Route::post('/search', [AdminController::class, 'search'])->name('search');
+
 
 require __DIR__.'/auth.php';

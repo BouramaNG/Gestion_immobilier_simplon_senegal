@@ -38,4 +38,17 @@ class AdminController extends Controller
       $userInactive = User::all();
       return view('frontend.acceuil',compact('userInactive','biens'));
    }
+   public function search(Request $request)
+{
+   $biens = Bien::all();
+    $nomBien = $request->input('nom_bien');
+    $ville = $request->input('addresse');
+
+    $results = Bien::where('nom', 'LIKE', '%' . $nomBien . '%')
+        ->where('addresse', 'LIKE', '%' . $ville . '%')
+        ->get();
+
+    return view('frontend.acceuil', compact('results','biens'));
+}
+
 }
