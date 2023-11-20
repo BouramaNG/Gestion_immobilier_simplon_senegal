@@ -13,14 +13,13 @@ return new class extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('category');
-            $table->string('image')->nullable();
-            $table->text('description');
-            $table->string('address');
-            $table->enum('status', ['occupied', 'unoccupied']);
-            $table->dateTime('registration_date');
-            $table->foreignId('user_id')->constrained('users');
+            $table->string('nom');
+            $table->string('categorie');
+            $table->string('image');
+            $table->string('description');
+            $table->string('addresse');
+            $table->string('status');
+            $table->date('date');
             $table->timestamps();
         });
     }

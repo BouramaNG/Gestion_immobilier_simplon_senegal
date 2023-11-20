@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bien;
+use App\Models\Propertie;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 
@@ -34,13 +35,13 @@ class AdminController extends Controller
 
    public function Desactivation()
    {
-      $biens = Bien::all();
+      $biens = Propertie::all();
       $userInactive = User::all();
       return view('frontend.acceuil',compact('userInactive','biens'));
    }
    public function search(Request $request)
 {
-   $biens = Bien::all();
+   $biens = Propertie::all();
     $nomBien = $request->input('nom_bien');
     $ville = $request->input('addresse');
 
@@ -50,5 +51,7 @@ class AdminController extends Controller
 
     return view('frontend.acceuil', compact('results','biens'));
 }
+
+
 
 }

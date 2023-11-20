@@ -111,7 +111,7 @@
             </a>
             <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Ajouter Commentaire </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{url('listercommentaire')}}">Voir Commentaire </a></li>
                     <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> Supprimer Commentaire </a></li>
 
                 </ul>

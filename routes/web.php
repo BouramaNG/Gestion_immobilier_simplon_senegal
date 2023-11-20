@@ -61,5 +61,9 @@ Route::put('modifier/{id}', [BienController::class, 'update']);
 Route::post('/search', [AdminController::class, 'search'])->name('search');
 Route::get('/details/{id}', [BienController::class, 'details'])->name('bien.details');
 Route::post('/comment/store', [CommentaireController::class, 'store'])->name('comment.store');
-
+Route::get('Ajoutcommentaire/{id}', [CommentaireController::class,'Ajoutcommentaire'])->name('frontend.Ajoutcommentaire');
+Route::post('Ajoutercommentaire/{id}', [CommentaireController::class,'Ajoutercommentaire'])->name('frontend.Ajoutercommentaire');
+Route::get('listercommentaire', [CommentaireController::class,'Listercommentaire'])->name('admin.VoirCommentaire');
+Route::get('commentaire', [CommentaireController::class,'Commentaire'])->name('frontend.VoirCommentaire');
+Route::delete('listercommentaire/{id}', [CommentaireController::class,'destroy']);
 require __DIR__.'/auth.php';

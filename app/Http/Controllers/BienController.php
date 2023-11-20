@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bien;
+use App\Models\Propertie;
+
 use Illuminate\Http\Request;
 
 class BienController extends Controller
@@ -25,7 +26,7 @@ class BienController extends Controller
     }
     public function show ()
     {
-        $bien = Bien::all();
+        $bien = Propertie::all();
         return view("admin.listebien", compact("bien"));
     }
 
@@ -40,7 +41,7 @@ class BienController extends Controller
             "status"=> "required|string",
             "date"=>"required|date",
         ]);
-        $bien = new Bien();
+        $bien = new Propertie();
         $bien->nom = $request->nom;
         $bien->categorie = $request->categorie;
         // $bien->image = $request->image;
@@ -66,7 +67,7 @@ class BienController extends Controller
 
     public function delete($id)
     {
-        $bien = Bien::find($id);
+        $bien = Propertie::find($id);
         $bien->destroy($id);
         if ($bien->save())
         {
@@ -77,10 +78,10 @@ class BienController extends Controller
 
     public function edit($id)
     {
-        $bien = Bien::where(
+        $bien = Propertie::where(
             'id', '=', $id
         )->first();
-        // $bien = Bien::find($id);
+        // $bien = Propertie::find($id);
         return view("admin.modifier", compact("bien"));
     }
 
@@ -96,7 +97,7 @@ class BienController extends Controller
         "date" => "required|date",
     ]);
 
-    $bien = Bien::find($id);
+    $bien = Propertie::find($id);
     $bien->nom = $request->nom;
     $bien->categorie = $request->categorie;
     if ($request->hasFile('image')) {
@@ -114,7 +115,7 @@ class BienController extends Controller
 }
 public function details($id)
 {
-    $bien = Bien::find($id);
+    $bien = Propertie::find($id);
 
     return view('frontend.details', compact('bien'));
 }
