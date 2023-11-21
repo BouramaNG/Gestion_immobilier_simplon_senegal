@@ -361,6 +361,7 @@
                         </li>
                 </div>
             </nav>
+            
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
@@ -467,17 +468,27 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="exampleSelect1" class="form-label">Status</label>
-                                <select name="status" class="form-select" id="exampleSelect1">
+                                <label for="exampleSelect1" class="form-label @error('status') is-invalid @enderror">Status</label>
+                                <select name="status" class="form-select" id="exampleSelect1" value="{{old('status')}}">
                                     <option>Occupe</option>
                                     <option>Non-Occuper</option>
                                 </select>
-                                <label for="exampleSelect1" class="form-label ">categorie</label>
-                                <select name="categorie" class="form-select" id="exampleSelect1">
+                                @error('status')
+                                    <div class="invalid-feedback">
+                                    {{ $errors->first('status')}}
+                                    </div>
+                                    @enderror
+                                <label for="exampleSelect1" class="form-label @error('categorie') is-invalid @enderror">categorie</label>
+                                <select name="categorie" class="form-select" id="exampleSelect1" value="{{old('categorie')}}">
                                     <option>Luxe</option>
                                     <option>Moyenne</option>
                                     <option>Faible</option>
                                 </select>
+                                @error('categorie')
+                                    <div class="invalid-feedback">
+                                    {{ $errors->first('categorie')}}
+                                    </div>
+                                    @enderror
                             </div>
 
 
