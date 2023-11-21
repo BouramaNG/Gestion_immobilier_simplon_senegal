@@ -41,10 +41,10 @@ Route::middleware(['auth','role:admin'])->group(function () {
 
     Route::get('agence/dashboard', [AgenceController::class,'AgenceDashboard'])->name('agence.dashboard');
 });
-
+//ALL MY ROUTE THAT I ADD IN THIS PROJECT
 Route::get('ajout_bien', [BienController::class,'index']);
 Route::post('ajout_bien', [BienController::class,'store']);
-Route::get('liste_bien/{id}', [BienController::class,'delete']);
+Route::delete('liste_bien/{id}', [BienController::class,'delete']);
 Route::get('liste_bien', [BienController::class,'show'])->name('liste.bien');
 Route::get('modifier/{id}', [BienController::class,'edit']);
 Route::put('modifier/{id}', [BienController::class, 'update']);
