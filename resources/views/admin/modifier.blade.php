@@ -364,15 +364,6 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    @if (session()->has('message'))
-                        <div class="alert alert-success">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-                            {{ session()->get('message') }}
-                        </div>
-                    @endif
-
-
-
                     <div class="titre">
                         <div>
                             <input type="hidden" value="{{ $bien->id }}" id="id">
@@ -390,63 +381,65 @@
                                     aria-describedby="nameHelp" value="{{ $bien->nom }}">
                             </div>
 
-                            <div class="designe">
-                                <label for="">Description</label>
-                                <textarea name="description" class="form-control" id="description" cols="53" rows="5">{{ $bien->description }}</textarea>
-                            </div>
-                            <div class="designe">
-                                <label for="">Adresse</label>
-                                <input name="addresse" type="text" class="form-control"
-                                    value="{{ $bien->addresse }}">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label mt-4">Date</label>
-                                <input name="date" type="date" class="form-control"
-                                    value="{{ $bien->date }}">
-                            </div>
+                        <div class="designe">
+                            <label for="">Description</label>
+                            <textarea name="description" class="form-control" id="description" cols="53" rows="5">{{ $bien->description }}</textarea>
+                        </div>
+                        <div class="designe">
+                            <label for="">Adresse</label>
+                            <input name="addresse" type="text" class="form-control"
+                                value="{{ $bien->addresse }}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label mt-4">Date</label>
+                            <input name="date" type="date" class="form-control"
+                                value="{{ $bien->date }}">
+                        </div>
 
 
-                            <div class="mb-3">
-                                <label class="form-label mt-3">Image actuelle</label>
-                                <img src="{{ asset('storage/' . $bien->image) }}" alt="Current Image"
-                                    class="img-thumbnail" style="max-width: 100px;">
-                            </div>
+                        <div class="mb-3">
+                            <label class="form-label mt-3">Image actuelle</label>
+                            <img src="{{ asset('storage/' . $bien->image) }}" alt="Current Image"
+                                class="img-thumbnail" style="max-width: 100px;">
+                        </div>
 
-                            <div class="mb-3">
-                                <label class="form-label mt-3">Nouvelle Image</label>
-                                <input name="image" type="file" class="form-control"
-                                    aria-label="file example @error('image') is_invalid @enderror">
-                                @error('image')
-                                    <div class="invalid-feedback">{{ $errors->first('image') }}</div>
-                                @enderror
-                            </div>
-
-
+                        <div class="mb-3">
+                            <label class="form-label mt-3">Nouvelle Image</label>
+                            <input name="image" type="file" class="form-control"
+                                aria-label="file example @error('image') is_invalid @enderror">
+                            @error('image')
+                                <div class="invalid-feedback">{{ $errors->first('image') }}</div>
+                            @enderror
+                        </div>
 
 
-                            <div class="form-group">
-                                <label for="exampleSelect1" class="form-label">Status</label>
-                                <select name="status" class="form-select" id="exampleSelect1">
-                                    <option>{{ $bien->status }}</option>
-                                    <option>Non-occuper</option>
-                                </select>
-                                <label for="exampleSelect1" class="form-label ">categorie</label>
-                                <select name="categorie" class="form-select" id="exampleSelect1">
-                                    <option>{{ $bien->categorie }}</option>
-                                    <option>Luxe</option>
-                                    <option>Moyenne</option>
-                                    <option>Faible</option>
-                                </select>
-                            </div>
 
-                            <div class="mb-3">
-                                <a href="{{ url('liste_bien') }}">
 
-                                    <button class="btn btn-primary" type="submit">Enregistrer Modifcation</button>
-                                </a>
-                            </div>
-                        </form>
-                    </div>
+                        <div class="form-group">
+                            <label for="exampleSelect1" class="form-label">Status</label>
+                            <select name="status" class="form-select" id="exampleSelect1">
+                                <option>{{ $bien->status }}</option>
+                                <option>Non-occuper</option>
+                            </select>
+                            <label for="exampleSelect1" class="form-label ">categorie</label>
+                            <select name="categorie" class="form-select" id="exampleSelect1">
+                                <option>{{ $bien->categorie }}</option>
+                                <option>Luxe</option>
+                                <option>Moyenne</option>
+                                <option>Faible</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <a href="{{ url('liste_bien') }}">
+
+                                <button class="btn btn-primary" type="submit">Enregistrer Modifcation</button>
+                            </a>
+                        </div>
+                    </form>
+                    @endif
+                </div>
+                      
 
                 </div>
             </div>
