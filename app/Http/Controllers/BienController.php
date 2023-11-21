@@ -308,7 +308,7 @@ class BienController extends Controller
         return view("admin.modifier", compact("bien"));
     }
     public function update(Request $request, $id)
-{
+    {
     $request->validate([
         "nom" => "required|string|min:3",
         "categorie" => "required|string",
