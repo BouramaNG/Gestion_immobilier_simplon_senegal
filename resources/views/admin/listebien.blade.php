@@ -396,133 +396,87 @@
                         </li>
                 </div>
             </nav>
-            <!-- partial -->
-            {{-- <div class="main-panel">
-                <div class="content-wrapper">
-                    <legend>Listes des bien</legend>
-                    <div class="row ">
-                        <div class="col-10 grid-margin">
-                            <div class="row">
-                                @foreach ($bien as $produit)
-                                    <div class="card col-md-2 mb-3 my-2">
-                                        <img src="{{ asset('storage/' . $produit->image) }}" class="card-img-top"
-                                            alt="bien-avatar">
-                                        <div class="card-body">
-                                            <p class="card-text">{{ $produit->description }}</p>
-                                        </div>
-                                        <div class="mb-3">
-                                        <form action="/liste_bien/{{$produit->id}}" method="DELETE">
-                                            @method('delete')
-                                            @csrf
-                                            <button type="submit" class="btn btn-danger">
-                                                <i class="fas fa-trash"></i> Supprimer
-                                            </button>
-                                        </form>
-                                        <br>
-                                        <a href="/modifier/{{$produit->id}}">
-                                            <button type="submit" class="btn btn-danger " value="{{$produit->id}}">
-                                                <i class="fas fa-trash"></i> modifier
-                                            </button>
-                                        </a>
-                                    </div> 
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div> --}}
-                <!-- content-wrapper ends -->
-                <!-- partial:partials/_footer.html -->
-                <footer class="footer">
-                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
-                            bootstrapdash.com 2020</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
-                                href="https://www.bootstrapdash.com/bootstrap-admin-template/"
-                                target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>
-                    </div>
-                </footer>
-                <!-- partial -->
-            {{-- </div> --}}
+            <footer class="footer">
+                <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
+                        bootstrapdash.com 2020</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
+                            href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap
+                            admin templates</a> from Bootstrapdash.com</span>
+                </div>
+            </footer>
             <div class="main-panel">
                 <div class="content-wrapper ">
                     <legend>Liste des products</legend>
-                    {{-- <div class="row"> --}}
-                        <div class="col-12 m-4 p-4 ">
-                            <table class="table">
-                                <thead>
+                    <div class="col-12 m-4 p-4 ">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Categorie</th>
+                                    <th scope="col">Addresse</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($bien as $produit)
                                     <tr>
-                                        <th scope="col">Id</th>
-                                        <th scope="col">Image</th>
-                                        <th scope="col">Nom</th>
-                                        <th scope="col">Description</th>
-                                        <th scope="col">Categorie</th>
-                                        <th scope="col">Addresse</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Actions</th>
+                                        <td>{{ $produit->id }}</td>
+                                        <td>
+                                            <img src="{{ asset('storage/' . $produit->image) }}" alt="bien-avatar" style="max-width: 200px; max-height: 150px;">
+                                        </td>
+                                        <td>{{ $produit->nom }}</td>
+                                        <td>{{ $produit->description }}</td>
+                                        <td>{{ $produit->categorie }}</td>
+                                        <td>{{ $produit->addresse }}</td>
+                                        <td>{{ $produit->status }}</td>
+                                        <td>{{ $produit->date }}</td>
+                                        <td>
+                                            <form action="/liste_bien/{{ $produit->id }}" method="POST">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger">
+                                                    <i class="fas fa-trash">Supprimer</i>
+                                                </button>
+                                                <a href="/modifier/{{ $produit->id }}" class="btn btn-primary">
+                                                    <i class="fas fa-edit">Modifier</i> 
+                                                </a>
+                                                {{-- <button type="submit" class="btn btn-secondary">
+                                                    <i class="fas fa-edit">Comment</i>
+                                                </button> --}}
+                                            </form>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($bien as $produit)
-                                        <tr>
-                                            <td>{{$produit->id}}</td>
-                                            <td>
-                                                <img src="{{ asset('storage/' . $produit->image) }}"
-                                                    alt="bien-avatar" style="max-width: 200px; max-height: 150px;">
-                                            </td>
-                                            <td>{{ $produit->nom }}</td>
-                                            <td>{{ $produit->description }}</td>
-                                            <td>{{ $produit->categorie }}</td>
-                                            <td>{{ $produit->addresse }}</td>
-                                            <td>{{ $produit->status }}</td>
-                                            <td>{{ $produit->date }}</td>
-                                            <td>
-                                                <form action="/liste_bien/{{$produit->id}}" method="POST">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-danger">
-                                                        <i class="fas fa-trash"></i> Supprimer
-                                                    </button>
-                                                    <a href="/modifier/{{$produit->id}}" class="btn btn-primary">
-                                                        <i class="fas fa-edit"></i> Modifier
-                                                    </a>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                @endforeach
+                                @if (session()->has('success'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{ session()->get('success') }}
+                                </div>
+                            @endif
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            
-            <!-- main-panel ends -->
         </div>
-        <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
+    </div>
     <script src="assets/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
     <script src="admin/assets/vendors/chart.js/Chart.min.js"></script>
     <script src="admin/assets/vendors/progressbar.js/progressbar.min.js"></script>
     <script src="admin/assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
     <script src="admin/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <script src="admin/assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
     <script src="admin/assets/js/off-canvas.js"></script>
     <script src="admin/assets/js/hoverable-collapse.js"></script>
     <script src="admin/assets/js/misc.js"></script>
     <script src="admin/assets/js/settings.js"></script>
     <script src="admin/assets/js/todolist.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
     <script src="admin/assets/js/dashboard.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -533,7 +487,6 @@
             });
         });
     </script>
-    <!-- End custom js for this page -->
 </body>
 
 </html>
