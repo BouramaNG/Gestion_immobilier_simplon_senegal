@@ -181,7 +181,7 @@
         </a>
       </div>
     </figure>
-
+    @can('search', \App\Models\Propertie::class)
     <!-- Aside with the search form -->
     <aside class="col-xs-12 col-lg-3 p-y-2" id="search_form">
     <h3 class="m-b-1 text-xs-center"><i class="fa fa-search-plus" aria-hidden="true"></i>Vous recherchez</h3>
@@ -199,6 +199,7 @@
         <button type="submit" class="btn" id="find_button">Trouver mon bien</button>
     </form>
 </aside>
+@endcan
   </div>
 
 </section>
@@ -297,12 +298,12 @@
 
   <!-- Start of the section -->
   <section class="container p-t-1 p-x-1 text-xs-center">
-    <h4>Lille Immo en bref</h4>
-    <p>Lille Immo c'est 5 agences réparties au travers de la métropole et toujours à votre service. Vous pouvez contacter l'agence la plus proche de chez vous via la rubrique nos agences ou contacter notre siège au 03 20 ## ## ##</p>
+    <h4>SamaImmo en bref</h4>
+    <p>SamaImmo c'est 5 agences réparties au travers de la métropole et toujours à votre service. Vous pouvez contacter l'agence la plus proche de chez vous via la rubrique nos agences ou contacter notre siège au 03 20 ## ## ##</p>
     <!-- Footer navigation -->
     
     <!-- Copyright paragraphe -->
-    <p>Lille Immo 2016. &copy;Une réalisation <a href="https://thomgo.github.io/portfolio/" target="_blank">Thomas Gossart</a></p>
+    <p>SamaImmo 2023. &copy;Une réalisation <a href="https://thomgo.github.io/portfolio/" target="_blank">Team Bassen</a></p>
   </section>
 
 </footer>

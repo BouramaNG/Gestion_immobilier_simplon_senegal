@@ -95,6 +95,20 @@ class BienController extends Controller
         "addresse" => "required|string",
         "status" => "required|string",
         "date" => "required|date",
+    ], [
+        
+        'nom.required' => 'Le champ Nom est obligatoire.',
+        'nom.min' => 'Le champ Nom doit avoir au moins :min caractères.',
+        'categorie.required' => 'Le champ Catégorie est obligatoire.',
+        'image.required' => 'Le champ Image est obligatoire.',
+        'image.image' => 'Le fichier doit être une image.',
+        'image.max' => 'L\'image ne doit pas dépasser :max kilo-octets.',
+        'description.required' => 'Le champ Description est obligatoire.',
+        'description.min' => 'Le champ Description doit avoir au moins :min caractères.',
+        'addresse.required' => 'Le champ Adresse est obligatoire.',
+        'status.required' => 'Le champ Statut est obligatoire.',
+        'date.required' => 'Le champ Date est obligatoire.',
+        'date.date' => 'Le champ Date doit être une date valide.',
     ]);
 
     $bien = Propertie::find($id);
@@ -109,7 +123,7 @@ class BienController extends Controller
     $bien->date = $request->date;
     $bien->save();
     // dd($bien);
-    return back()->with('success','Mise à jour réussi');
+    return redirect()->back()->with('message','Mise à jour réussi');
 
 
 }
@@ -119,5 +133,21 @@ public function details($id)
 
     return view('frontend.details', compact('bien'));
 }
+
+// Dans votre contrôleur PropertyController, par exemple
+
+public function voir(Propertie $property)
+{
+    $this->authorize('view', $property);
+
+   
+}
+
+public function search()
+{
+    $this->authorize('search', Propertie::class);
+
+}
+
 
 }

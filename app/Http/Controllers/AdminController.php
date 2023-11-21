@@ -45,13 +45,34 @@ class AdminController extends Controller
     $nomBien = $request->input('nom_bien');
     $ville = $request->input('addresse');
 
-    $results = Bien::where('nom', 'LIKE', '%' . $nomBien . '%')
+    $results = Propertie::where('nom', 'LIKE', '%' . $nomBien . '%')
         ->where('addresse', 'LIKE', '%' . $ville . '%')
         ->get();
 
     return view('frontend.acceuil', compact('results','biens'));
 }
+public function AdAdmin()
+{
+   return view('admin.admin');
+}
+public function addAdmin(Request $request)
+{
+    // Validate the form data
+    $validatedData = $request->validate([
+        'adminEmail' => 'required|email|unique:users,email',
+        'adminPassword' => 'required|min:6',
+    ]);
 
+    // Create a new admin
+    $admin = new User();
+    $admin->email = $validatedData['adminEmail'];
+    $admin->password = bcrypt($validatedData['adminPassword']);
+    $admin->role = 'admin'; // Set the role to 'admin'
+    $admin->save();
+
+    // Redirect back with a success message
+    return redirect()->back()->with('success', 'Admin added successfully');
+}
 
 
 }

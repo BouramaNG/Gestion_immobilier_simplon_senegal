@@ -83,6 +83,19 @@ class CommentaireController extends Controller
     
        
 }
+
+public function Supp($id)
+{
+    // Trouve le post avec l'ID donné
+    $commentaires = Comment::find($id);
+     $commentaires->delete();
+     return redirect()->back()->with('message','votre commentaire a ete supprimer avec succe');
+    // Redirige vers la page d'index des posts avec un message de succès
+    
+       
+}
+
+
 public  function show() {
     $commentaires=Comment::all();
     return view('admin.VoirCommentair',compact('commentaires'));

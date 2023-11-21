@@ -34,14 +34,55 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+Route::prefix('user')->middleware(['auth','role:admin'])->group(function(){
+    Route::get('/dashboard', [AdminController::class,'AdminDashboard'])->name('admin.dashboard');
+    Route::get('add_admin', [AdminController::class,'AdAdmin'])->name('add.admin');
+    Route::post('/add/admin', [AdminController::class,'addAdmin'])->name('add.admin');
+    
+    Route::get('ajout_bien', [BienController::class,'AjoutBien'])->name('ajout.bien');
+    Route::get('liste_bien', [BienController::class,'ListeBien'])->name('liste.bien');
+    Route::get('liste_user',[AdminController::class,'ListeUser'])->name('liste.user');
+    Route::post('/inactive_user/{id}',[AdminController::class,'InactiveUser'])->name('inactive.user');
+    Route::get('/',[AdminController::class,'Desactivation'])->name('desactiver');
+
+
+
+    //route pour les biens 
+Route::get('ajout_bien', [BienController::class,'index']);
+Route::post('ajout_bien', [BienController::class,'store']);
+Route::delete('liste_bien/{id}', [BienController::class, 'delete'])->name('bien.delete');
+Route::get('liste_bien', [BienController::class,'show'])->name('liste.bien');
+Route::get('modifier/{id}', [BienController::class,'edit']);
+Route::put('modifier/{id}', [BienController::class, 'update']);
+// web.php
+
+Route::post('/search', [AdminController::class, 'search'])->name('search');
+Route::get('/details/{id}', [BienController::class, 'details'])->name('bien.details');
+Route::get('delete_comment/{id}', [CommentaireController::class, 'Supp'])->name('comment.delete');
+Route::post('/comment/store', [CommentaireController::class, 'store'])->name('comment.store');
+Route::get('Ajoutcommentaire/{id}', [CommentaireController::class,'Ajoutcommentaire'])->name('frontend.Ajoutcommentaire');
+Route::post('Ajoutercommentaire/{id}', [CommentaireController::class,'Ajoutercommentaire'])->name('frontend.Ajoutercommentaire');
+Route::get('listercommentaire', [CommentaireController::class,'Listercommentaire'])->name('admin.VoirCommentaire');
+Route::get('commentaire', [CommentaireController::class,'Commentaire'])->name('frontend.VoirCommentaire');
+Route::delete('listercommentaire/{id}', [CommentaireController::class,'destroy']);
+
+});
+
+
+
+
 Route::middleware(['auth','role:admin'])->group(function () {
 
-    Route::get('admin/dashboard', [AdminController::class,'AdminDashboard'])->name('admin.dashboard');
+    Route::get('/dashboard', [AdminController::class,'AdminDashboard'])->name('admin.dashboard');
 });
 Route::middleware(['auth','role:admin'])->group(function () {
 
     Route::get('agence/dashboard', [AgenceController::class,'AgenceDashboard'])->name('agence.dashboard');
 });
+Route::get('add_admin', [AdminController::class,'AdAdmin'])->name('add.admin');
+Route::post('/add/admin', [AdminController::class,'addAdmin'])->name('add.admin');
+
 Route::get('ajout_bien', [BienController::class,'AjoutBien'])->name('ajout.bien');
 Route::get('liste_bien', [BienController::class,'ListeBien'])->name('liste.bien');
 Route::get('liste_user',[AdminController::class,'ListeUser'])->name('liste.user');
@@ -60,6 +101,7 @@ Route::put('modifier/{id}', [BienController::class, 'update']);
 
 Route::post('/search', [AdminController::class, 'search'])->name('search');
 Route::get('/details/{id}', [BienController::class, 'details'])->name('bien.details');
+Route::get('delete_comment/{id}', [CommentaireController::class, 'Supp'])->name('comment.delete');
 Route::post('/comment/store', [CommentaireController::class, 'store'])->name('comment.store');
 Route::get('Ajoutcommentaire/{id}', [CommentaireController::class,'Ajoutcommentaire'])->name('frontend.Ajoutcommentaire');
 Route::post('Ajoutercommentaire/{id}', [CommentaireController::class,'Ajoutercommentaire'])->name('frontend.Ajoutercommentaire');

@@ -122,9 +122,9 @@ footer {
                     @csrf
                     
                     <img class="image" src="{{asset('product/' . $bien->image)}}" alt="">
-                    <h3>Commentaires pour {{ $bien->nom }}</h3>
-                    <h3>Commentaires pour {{ $bien->categorie }}</h3>
-                    <h3>Commentaires pour {{ $bien->description }}</h3>
+                    <h3>Nom Bien : {{ $bien->nom }}</h3>
+                    <h3>Categorie : {{ $bien->categorie }}</h3>
+                    <h3>Description : {{ $bien->description }}</h3>
                        
                         <!-- Ajouter les champs du formulaire -->
                         @if($isConnected)
@@ -149,6 +149,7 @@ footer {
 <h1>Les commentaire</h1>
 @foreach($comment as $comments)
 <p class="post">Nom Utilisateur: {{$comments->user->name}} Commentaire:  {{$comments->content}}</p>
+<button class="sucess"><a href="delete_comment/{{$comments->id}}">Supprimer</a></button>
 @endforeach
 </div>
     <!-- Pied de page -->
