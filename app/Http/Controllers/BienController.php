@@ -10,7 +10,8 @@ class BienController extends Controller
 {
     public function index()
     {
-        return view("admin.ajoutbien");
+        $bien = Bien::all();
+        return view("admin.ajoutbien", compact("bien"));
     }
     public function show ()
     {
@@ -39,7 +40,7 @@ class BienController extends Controller
         $bien->status = $request->status;
         $bien->date = $request->date;
         $bien->save();
-        return back()->with('success','Votre produit a été ajouter');
+        return back()->with('message','Votre produit a été bien ajouter');
         
     }
     private function storeImage($image): string
@@ -68,7 +69,7 @@ class BienController extends Controller
     }
 
     public function update(Request $request, $id)
-{
+    {
     $request->validate([
         "nom" => "required|string|min:3",
         "categorie" => "required|string",
@@ -91,7 +92,7 @@ class BienController extends Controller
     $bien->date = $request->date;
     $bien->save();
     // dd($bien);
-    return back()->with('success','Mise à jour réussi');
-}
+    return back()->with('update','Mise à jour réussi');
+    }
 
 }
