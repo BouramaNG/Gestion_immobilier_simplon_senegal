@@ -396,67 +396,103 @@
                         </li>
                 </div>
             </nav>
+            
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    @if (session()->has('message'))
-                        <div class="alert alert-success">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                            {{ session()->get('message') }}
-                        </div>
-                    @endif
-
+                    @if (! session()->has('message'))
                     <div class="titre">
                         <h1>Ajouter Bien</h1>
                         <form action="ajout_bien" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="form-label mt-4 my-4">Nom Bien</label>
-                                <input name="nom" type="text" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="nameHelp" placeholder="Entrer le nom">
+                                <input name="nom" type="text" class="form-control @error('nom') is-invalid @enderror" 
+                                    aria-describedby="nameHelp" placeholder="Entrer le nom " value="{{old('nom')}}">
+                                    @error('nom')
+                                    <div class="invalid-feedback">
+                                    {{ $errors->first('nom')}}
+                                    </div>
+                                    @enderror
                             </div>
 
                             <div class="designe">
                                 <label for="">Description</label>
-                                <textarea name="description" class="form-control" id="description" cols="53" rows="5"
-                                    placeholder="Mettez la description"></textarea>
+                                <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" cols="53" rows="5"
+                                    placeholder="Mettez la description">{{old('description')}}</textarea>
+                                    @error('description')
+                                    <div class="invalid-feedback">
+                                    {{ $errors->first('description')}}
+                                    </div>
+                                    @enderror
                             </div>
                             <div class="designe">
                                 <label for="">Adresse</label>
-                                <input name="addresse" type="text" class="form-control">
+                                <input name="addresse" type="text" class="form-control @error('addresse') is-invalid @enderror" value="{{old('addresse')}}">
                             </div>
+                            @error('addresse')
+                                    <div class="invalid-feedback">
+                                    {{ $errors->first('addresse')}}
+                                    </div>
+                                    @enderror
                             <div class="form-group">
                                 <label class="form-label mt-4">Date</label>
-                                <input name="date" type="date" class="form-control"
-                                    placeholder="Entrez la date">
+                                <input name="date" type="date" class="form-control @error('date') is-invalid @enderror"
+                                    placeholder="Entrez la date" value="{{old('date')}}">
+                                    @error('date')
+                                    <div class="invalid-feedback">
+                                    {{ $errors->first('date')}}
+                                    </div>
+                                    @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label mt-3">Image</label>
-                                <input name="image" type="file" class="form-control"
-                                    aria-label="file example @error('image') is_invalid @enderror">
+                                <input name="image" type="file" class="form-control @error('image') is-invalid @enderror"
+                                    aria-label="file example" value="{{old('image')}}">
                                 @error('image')
                                     <div class="invalid-feedback">{{ $errors->first('image') }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="exampleSelect1" class="form-label">Status</label>
-                                <select name="status" class="form-select" id="exampleSelect1">
+                                <label for="exampleSelect1" class="form-label @error('status') is-invalid @enderror">Status</label>
+                                <select name="status" class="form-select" id="exampleSelect1" value="{{old('status')}}">
                                     <option>Occupe</option>
                                     <option>Non-Occuper</option>
                                 </select>
-                                <label for="exampleSelect1" class="form-label ">categorie</label>
-                                <select name="categorie" class="form-select" id="exampleSelect1">
+                                @error('status')
+                                    <div class="invalid-feedback">
+                                    {{ $errors->first('status')}}
+                                    </div>
+                                    @enderror
+                                <label for="exampleSelect1" class="form-label @error('categorie') is-invalid @enderror">categorie</label>
+                                <select name="categorie" class="form-select" id="exampleSelect1" value="{{old('categorie')}}">
                                     <option>Luxe</option>
                                     <option>Moyenne</option>
                                     <option>Faible</option>
                                 </select>
+                                @error('categorie')
+                                    <div class="invalid-feedback">
+                                    {{ $errors->first('categorie')}}
+                                    </div>
+                                    @enderror
                             </div>
 
                             <div class="mb-3">
                                 <button class="btn btn-primary" type="submit">Enregistrer</button>
                             </div>
                         </form>
+                        @endif
+                        @if(session()->has('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session()->get('message')}}
+                        </div>
+                        <a href="liste_bien">
+                            <div class="btn btn-primary">Voir liste</div>
+                        </a>
+                        @endif
+
+                    
                     </div>
 
                 </div>
