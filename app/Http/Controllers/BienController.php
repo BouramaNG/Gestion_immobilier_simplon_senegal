@@ -18,7 +18,6 @@ class BienController extends Controller
         $bien = Bien::all();
         return view("admin.listebien", compact("bien"));
     }
-
     public function store(Request $request)
     {
         $request->validate([
@@ -47,7 +46,6 @@ class BienController extends Controller
     {
         return $image->store('avatars', 'public');
     }
-
     public function delete($id)
     {
         $bien = Bien::find($id);
@@ -57,8 +55,6 @@ class BienController extends Controller
             return back()->with('success','vous avez supprimer cette produit');
         }
     }
-
-
     public function edit($id)
     {
         $bien = Bien::where(
@@ -67,7 +63,6 @@ class BienController extends Controller
         // $bien = Bien::find($id);
         return view("admin.modifier", compact("bien"));
     }
-
     public function update(Request $request, $id)
     {
     $request->validate([
@@ -94,5 +89,4 @@ class BienController extends Controller
     // dd($bien);
     return back()->with('update','Mise à jour réussi');
     }
-
 }
