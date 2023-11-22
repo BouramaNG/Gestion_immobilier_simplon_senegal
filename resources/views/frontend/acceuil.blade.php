@@ -181,10 +181,11 @@
         </a>
       </div>
     </figure>
-    @can('search', \App\Models\Propertie::class)
+  
     <!-- Aside with the search form -->
     <aside class="col-xs-12 col-lg-3 p-y-2" id="search_form">
     <h3 class="m-b-1 text-xs-center"><i class="fa fa-search-plus" aria-hidden="true"></i>Vous recherchez</h3>
+  
     <form action="{{ route('search') }}" method="post">
         @csrf
         <div class="form-group">
@@ -197,9 +198,10 @@
             <input class="form-control" type="text" name="addresse" placeholder="Ville(s)">
         </div>
         <button type="submit" class="btn" id="find_button">Trouver mon bien</button>
+ 
     </form>
 </aside>
-@endcan
+
   </div>
 
 </section>

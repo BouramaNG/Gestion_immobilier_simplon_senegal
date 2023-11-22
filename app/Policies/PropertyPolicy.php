@@ -21,12 +21,12 @@ class PropertyPolicy
     public function view(User $user)
     {
         // Vérifie si le compte de l'utilisateur est actif
-        return $user->status === 'active';
+        return $user->status === 'inactive';
     }
 
     public function search(User $user)
     {
         // Vérifie si le compte de l'utilisateur est actif
-        return $user->status === 'active';
+        return $user->status === 'inactive';
     }
 }

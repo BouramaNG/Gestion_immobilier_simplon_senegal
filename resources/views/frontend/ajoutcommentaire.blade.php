@@ -98,6 +98,8 @@ footer {
 }
 .image{
     border-radius: 10px;
+    width: 200px;
+    height: 200px;
 }
 .card
 {
@@ -148,8 +150,10 @@ footer {
 <div class="card">
 <h1>Les commentaire</h1>
 @foreach($comment as $comments)
+<div>
 <p class="post">Nom Utilisateur: {{$comments->user->name}} Commentaire:  {{$comments->content}}</p>
 <button class="sucess"><a href="delete_comment/{{$comments->id}}">Supprimer</a></button>
+</div>
 @endforeach
 </div>
     <!-- Pied de page -->
