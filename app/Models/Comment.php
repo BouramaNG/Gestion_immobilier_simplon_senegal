@@ -17,9 +17,9 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function property()
+    public function bien()
     {
-        return $this->belongsTo(Propertie::class);
+        return $this->belongsTo(Bien::class);
     }
 
     public function bien()

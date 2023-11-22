@@ -85,22 +85,38 @@
         <a class="nav-link" href="presentation.html">Présentation</a>
       </li>
       @if (Route::has('login'))
-      @auth
-      <li class="nav-item m-x-1">
-     <form action="{{route('logout')}}" method="post">
-     @csrf 
-     <button type="submit" class="btn btn-warning">Deconnexion</button>
-     </form>
-      </li>
-      @else
-      <li class="nav-item m-x-1">
-       <button class="btn btn-primary"> <a style="color: white;" href="{{route('register')}}">Incription</a></button>
-      </li>
-      <li class="nav-item m-x-1">
-      <button class="btn btn-danger"> <a style="color: white;" href="{{route('login')}}">Connexion</a></button>
-      </li>
-      @endauth
-      @endif
+    @auth
+        @if (auth()->user()->status == 'active')
+            <li class="nav-item m-x-1">
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf 
+                    <button type="submit" class="btn btn-warning">Deconnexion</button>
+                </form>
+            </li>
+        @else
+            <li class="nav-item m-x-1">
+                <div class="alert alert-danger">
+                    Votre compte est désactivé. Veuillez contacter Naruto 7emeDuNom Email: Uzumaki@gmail.com.
+                </div>
+            </li>
+        @endif
+    @else
+        @if (isset($userInactive) && $userInactive == 'inactive')
+            <li class="nav-item m-x-1">
+                <div class="alert alert-danger">
+                    Votre compte est désactivé. Veuillez contacter Naruto 7emeDuNom Email: Uzumaki@gmail.com.
+                </div>
+            </li>
+        @else
+            <li class="nav-item m-x-1">
+                <button class="btn btn-primary"> <a style="color: white;" href="{{ route('register') }}">Inscription</a></button>
+            </li>
+            <li class="nav-item m-x-1">
+                <button class="btn btn-danger"> <a style="color: white;" href="{{ route('login') }}">Connexion</a></button>
+            </li>
+        @endif
+    @endauth
+@endif
     </ul>
   </div>
 
@@ -165,49 +181,25 @@
         </a>
       </div>
     </figure>
-
+    @can('search', \App\Models\Propertie::class)
     <!-- Aside with the search form -->
     <aside class="col-xs-12 col-lg-3 p-y-2" id="search_form">
-      <h3 class="m-b-1 text-xs-center"><i class="fa fa-search-plus" aria-hidden="true"></i>Vous recherchez</h3>
-
-      <form>
+    <h3 class="m-b-1 text-xs-center"><i class="fa fa-search-plus" aria-hidden="true"></i>Vous recherchez</h3>
+    <form action="{{ route('search') }}" method="post">
+        @csrf
         <div class="form-group">
-          <select class="form-control">
-            <option>-Transaction-</option>
-            <option>Achat</option>
-            <option>Location</option>
-          </select>
+            <label for="nom_bien">Nom du Bien</label>
+            <input class="form-control" type="text" name="nom_bien" placeholder="Nom du Bien">
         </div>
+       
         <div class="form-group">
-          <select class="form-control">
-            <option>-Bien recherché-</option>
-            <option>Maison</option>
-            <option>Appartement</option>
-            <option>Studio</option>
-            <option>Loft</option>
-            <option>Villa</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <input class="form-control" type="text" placeholder="Ville(s)">
-        </div>
-        <div class="form-group">
-          <select class="form-control">
-            <option>-Votre budget-</option>
-            <option>- 100 000</option>
-            <option>100 à 120 000</option>
-            <option>120 à 150 000</option>
-            <option>150 à 200 000</option>
-            <option>200 à 300 000</option>
-            <option>300 à 400 000</option>
-            <option>400 à 500 000</option>
-            <option>+ 500 000</option>
-          </select>
+            <label for="ville">Ville(s)</label>
+            <input class="form-control" type="text" name="addresse" placeholder="Ville(s)">
         </div>
         <button type="submit" class="btn" id="find_button">Trouver mon bien</button>
-      </form>
-
-    </aside>
+    </form>
+</aside>
+@endcan
   </div>
 
 </section>
@@ -220,78 +212,73 @@
 
 <!-- Start the card content -->
   <div class="row">
-
+@foreach($biens as $bien)
     <div class="col-xs-12 col-sm-6 col-md-4">
       <article class="card">
         <div class="card-block text-xs-center head">
-          <h4 class="card-title">Belle maison</h4>
-          <h6 class="card-subtitle">Comines, 210 000 euros</h6>
+          <h4 class="card-title">Bien: {{$bien->nom}}</h4>
+          <h6 class="card-subtitle">Address: {{$bien->addresse}}</h6>
         </div>
         <figure>
-          <img src="img/house_small.jpg" class="img-fluid hidden-sm-up" alt="maison bleu à vendre">
-          <img src="img/house_medium.jpg" class="img-fluid hidden-xs-down hidden-lg-up" alt="maison bleue à vendre">
-          <img src="img/house_large.jpg" class="img-fluid hidden-md-down" alt="maison bleu à vendre">
+          <img src="product/{{$bien->image}}" class="img-fluid hidden-sm-up" alt="maison bleu à vendre">
+          <img src="product/{{$bien->image}}" class="img-fluid hidden-xs-down hidden-lg-up" alt="maison bleue à vendre">
+          <img src="product/{{$bien->image}}" class="img-fluid hidden-md-down" alt="maison bleu à vendre">
         </figure>
         <div class="card-block text-xs-center">
-          <p class="card-text">Située dans un quartier calme et arboré, cette maison avec ses 4 chambres est idéale pour une famille</p>
+          <p class="card-text">{{$bien->description}}</p>
           <figure class="description">
-            <span><i class="fa fa-bed" aria-hidden="true"></i>  3 chambres</span>
-            <span><i class="fa fa-tree" aria-hidden="true"></i>  Jardin</span>
-            <span><i class="fa fa-tint" aria-hidden="true"></i>   2 SDB</span>
+            <span><i class="fa fa-bed" aria-hidden="true"></i>{{$bien->categorie}}</span>
+            <span><i class="fa fa-tree" aria-hidden="true"></i> {{$bien->status}}</span>
+            <span><i class="fa fa-tint" aria-hidden="true"></i>{{$bien->date}}</span>
           </figure>
-          <a href="#" class="card-link"><i class="fa fa-eye m-r-1" aria-hidden="true"></i>Voir</a>
-        </div>
-      </article>
-    </div>
+          <a href="{{ route('frontend.Ajoutcommentaire', $bien->id) }}" class="card-link"><i class="fa fa-eye m-r-1" aria-hidden="true"></i>Voir</a>
 
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <article class="card">
-        <div class="card-block text-xs-center head">
-          <h4 class="card-title">Belle maison</h4>
-          <h6 class="card-subtitle">Comines, 210 000 euros</h6>
-        </div>
-        <figure>
-          <img src="img/house_small.jpg" alt="maison bleu à vendre" class="img-fluid hidden-sm-up">
-          <img src="img/house_medium.jpg" alt="maison bleue à vendre" class="img-fluid hidden-xs-down hidden-lg-up">
-          <img src="img/house_large.jpg" alt="maison bleu à vendre" class="img-fluid hidden-md-down">
-        </figure>
-        <div class="card-block text-xs-center">
-          <p class="card-text">Située dans un quartier calme et arboré, cette maison avec ses 4 chambres est idéale pour une famille</p>
-          <figure class="description">
-            <span><i class="fa fa-bed" aria-hidden="true"></i>  3 chambres</span>
-            <span><i class="fa fa-tree" aria-hidden="true"></i>  Jardin</span>
-            <span><i class="fa fa-tint" aria-hidden="true"></i>   2 SDB</span>
-          </figure>
-          <a href="#" class="card-link"><i class="fa fa-eye m-r-1" aria-hidden="true"></i>Voir</a>
         </div>
       </article>
     </div>
+@endforeach
+   
 
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <article class="card">
-        <div class="card-block text-xs-center head">
-          <h4 class="card-title">Belle maison</h4>
-          <h6 class="card-subtitle">Comines, 210 000 euros</h6>
-        </div>
-        <figure>
-          <img src="img/house_small.jpg" alt="maison bleu à vendre" class="img-fluid hidden-sm-up">
-          <img src="img/house_medium.jpg" alt="maison bleue à vendre" class="img-fluid hidden-xs-down hidden-lg-up">
-          <img src="img/house_large.jpg" alt="maison bleu à vendre" class="img-fluid hidden-md-down">
-        </figure>
-        <div class="card-block text-xs-center">
-          <p class="card-text">Située dans un quartier calme et arboré, cette maison avec ses 4 chambres est idéale pour une famille</p>
-          <figure class="description">
-            <span><i class="fa fa-bed" aria-hidden="true"></i>  3 chambres</span>
-            <span><i class="fa fa-tree" aria-hidden="true"></i>  Jardin</span>
-            <span><i class="fa fa-tint" aria-hidden="true"></i>   2 SDB</span>
-          </figure>
-          <a href="#" class="card-link"><i class="fa fa-eye m-r-1" aria-hidden="true"></i>Voir</a>
-        </div>
-      </article>
-    </div>
+   
 
   </div>
 
+</section>
+<!-- Second boxed section -->
+<section class="container m-t-2">
+    <h3 class="m-b-2">Résultats de la recherche</h3>
+    <!-- Start the card content -->
+    <div class="row">
+        @if(isset($results) && count($results) > 0)
+            @foreach($results as $result)
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <article class="card">
+                        <div class="card-block text-xs-center head">
+                            <h4 class="card-title">Bien: {{ $result->nom }}</h4>
+                            <h6 class="card-subtitle">Address: {{ $result->addresse }}</h6>
+                        </div>
+                        <figure>
+                            <img src="product/{{ $result->image }}" class="img-fluid hidden-sm-up" alt="maison bleu à vendre">
+                            <img src="product/{{ $result->image }}" class="img-fluid hidden-xs-down hidden-lg-up" alt="maison bleue à vendre">
+                            <img src="product/{{ $result->image }}" class="img-fluid hidden-md-down" alt="maison bleu à vendre">
+                        </figure>
+                        <div class="card-block text-xs-center">
+                            <p class="card-text">{{ $result->description }}</p>
+                            <figure class="description">
+                                <span><i class="fa fa-bed" aria-hidden="true"></i>{{ $result->categorie }}</span>
+                                <!-- Ajoutez d'autres informations selon votre modèle -->
+                            </figure>
+                            <a href="#" class="card-link"><i class="fa fa-eye m-r-1" aria-hidden="true"></i>Voir</a>
+                        </div>
+                    </article>
+                </div>
+            @endforeach
+        @else
+            <div class="col-xs-12">
+                <p>Aucun résultat trouvé.</p>
+            </div>
+        @endif
+    </div>
 </section>
 
 
@@ -311,39 +298,12 @@
 
   <!-- Start of the section -->
   <section class="container p-t-1 p-x-1 text-xs-center">
-    <h4>Lille Immo en bref</h4>
-    <p>Lille Immo c'est 5 agences réparties au travers de la métropole et toujours à votre service. Vous pouvez contacter l'agence la plus proche de chez vous via la rubrique nos agences ou contacter notre siège au 03 20 ## ## ##</p>
+    <h4>SamaImmo en bref</h4>
+    <p>SamaImmo c'est 5 agences réparties au travers de la métropole et toujours à votre service. Vous pouvez contacter l'agence la plus proche de chez vous via la rubrique nos agences ou contacter notre siège au 03 20 ## ## ##</p>
     <!-- Footer navigation -->
-    <nav class="row">
-      <ul class="nav navbar-nav text-xs-center col-xs-9">
-        <li class="nav-item m-x-1">
-          <a class="nav-link" href="index.html">Accueil<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item m-x-1">
-          <a class="nav-link" href="achat.html">Achat</a>
-        </li>
-        <li class="nav-item m-x-1">
-          <a class="nav-link" href="location.html">Location</a>
-        </li>
-        <li class="nav-item m-x-1">
-          <a class="nav-link" href="presentation.html">Présentation</a>
-        </li>
-        <li class="nav-item m-x-1">
-          <a class="nav-link" href="agences.html">Nos agences</a>
-        </li>
-      </ul>
-      <!-- Social medias icons -->
-      <figure class="col-xs-3 m-t-1">
-        <a href="#">
-          <i class="fa fa-facebook-official fa-2x m-r-1" aria-hidden="true"></i>
-        </a>
-        <a href="#">
-          <i class="fa fa-twitter fa-2x m-r-2" aria-hidden="true"></i>
-        </a>
-      </figure>
-    </nav>
+    
     <!-- Copyright paragraphe -->
-    <p>Lille Immo 2016. &copy;Une réalisation <a href="https://thomgo.github.io/portfolio/" target="_blank">Thomas Gossart</a></p>
+    <p>SamaImmo 2023. &copy;Une réalisation <a href="https://thomgo.github.io/portfolio/" target="_blank">Team Bassen</a></p>
   </section>
 
 </footer>

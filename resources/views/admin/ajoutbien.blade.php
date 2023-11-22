@@ -51,124 +51,132 @@
 
 <body>
     <div class="container-scroller">
-        <!-- partial:partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-            <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-                <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg"
+          <!-- partial:partials/_sidebar.html -->
+          <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+                      <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg"
+                                                                          
                         alt="logo" /></a>
-                <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg"
+                      <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg"
+                                                                               
                         alt="logo" /></a>
-            </div>
-            <ul class="nav">
-                <li class="nav-item profile">
-                    <div class="profile-desc">
-                        <div class="profile-pic">
-                            <div class="count-indicator">
-                                <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg" alt="">
-                                <span class="count bg-success"></span>
-                            </div>
-                            <div class="profile-name">
-                                <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
-                                <span>Gold Member</span>
-                            </div>
-                        </div>
-                        <a href="#" id="profile-dropdown" data-toggle="dropdown"><i
+                </div>
+              <ul class="nav">
+                  <li class="nav-item profile">
+                      <div class="profile-desc">
+                          <div class="profile-pic">
+                              <div class="count-indicator">
+                                  <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg" alt="">
+                                  <span class="count bg-success"></span>
+                              </div>
+                              <div class="profile-name">
+                                  <h5 class="mb-0 font-weight-normal">{{Auth::user()->prenom}}</h5>
+                                  <span>Gold Member</span>
+                              </div>
+                          </div>
+                          <a href="#" id="profile-dropdown" data-toggle="dropdown"><i
+                               
                                 class="mdi mdi-dots-vertical"></i></a>
-                        <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
+                          <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
+                            
                             aria-labelledby="profile-dropdown">
-                            <a href="#" class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-settings text-primary"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-onepassword  text-info"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-calendar-today text-success"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item nav-category">
-                    <span class="nav-link">Navigation</span>
-                </li>
-                <li class="nav-item menu-items">
-                    <a class="nav-link" href="index.html">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-speedometer"></i>
-                        </span>
-                        <span class="menu-title">Dashboard</span>
-                    </a>
-                </li>
-                <li class="nav-item menu-items">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                              <a href="#" class="dropdown-item preview-item">
+                                  <div class="preview-thumbnail">
+                                      <div class="preview-icon bg-dark rounded-circle">
+                                          <i class="mdi mdi-settings text-primary"></i>
+                                      </div>
+                                  </div>
+                                  <div class="preview-item-content">
+                                      <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
+                                  </div>
+                              </a>
+                              <div class="dropdown-divider"></div>
+                              <a href="#" class="dropdown-item preview-item">
+                                  <div class="preview-thumbnail">
+                                      <div class="preview-icon bg-dark rounded-circle">
+                                          <i class="mdi mdi-onepassword  text-info"></i>
+                                      </div>
+                                  </div>
+                                  <div class="preview-item-content">
+                                      <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
+                                  </div>
+                              </a>
+                              <div class="dropdown-divider"></div>
+                              <a href="#" class="dropdown-item preview-item">
+                                  <div class="preview-thumbnail">
+                                      <div class="preview-icon bg-dark rounded-circle">
+                                          <i class="mdi mdi-calendar-today text-success"></i>
+                                      </div>
+                                  </div>
+                                  <div class="preview-item-content">
+                                      <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
+                                  </div>
+                              </a>
+                          </div>
+                      </div>
+                  </li>
+                  <li class="nav-item nav-category">
+                      <span class="nav-link">Navigation</span>
+                  </li>
+                  <li class="nav-item menu-items">
+                      <a class="nav-link" href="{{url('dashboard')}}">
+                                  <span class="menu-icon">
+                                        <i class="mdi mdi-speedometer"></i>
+                                  </span>
+                          <span class="menu-title">Dashboard</span>
+                      </a>
+                  </li>
+                  <li class="nav-item menu-items">
+                      <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                      
                         aria-controls="ui-basic">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-laptop"></i>
-                        </span>
-                        <span class="menu-title">Gestion Utilisateur</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="ui-basic">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a>
+                                  <span class="menu-icon">
+                                        <i class="mdi mdi-laptop"></i>
+                                  </span>
+                          <span class="menu-title">Gestion Utilisateur</span>
+                          <i class="menu-arrow"></i>
+                      </a>
+                      <div class="collapse" id="ui-basic">
+                          <ul class="nav flex-column sub-menu">
+                              <li class="nav-item"> <a class="nav-link" href="{{url('liste_user')}}">Liste Utilisateur</a>
                             </li>
-                            <li class="nav-item"> <a class="nav-link"
-                                    href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-                            <li class="nav-item"> <a class="nav-link"
+                              <li class="nav-item"> <a class="nav-link"
+                                    href="{{url('add_admin')}}">Ajouter Admin</a></li>
+                              <li class="nav-item"> <a class="nav-link"
                                     href="pages/ui-features/typography.html">Typography</a></li>
+                          </ul>
+                      </div>
+                  </li>
+
+
+
+                  <li class="nav-item menu-items">
+                      <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false"
+                      
+                        aria-controls="auth">
+                                  <span class="menu-icon">
+                                        <i class="mdi mdi-security"></i>
+                                  </span>
+                          <span class="menu-title">Bien</span>
+                          <i class="menu-arrow"></i>
+                      </a>
+                      <div class="collapse" id="auth">
+                          <ul class="nav flex-column sub-menu">
+                              <li class="nav-item"> <a class="nav-link" href="{{  url('ajout_bien')  }}"> Ajouter Bien
+                               
+                                </a></li>
+                              <li class="nav-item"> <a class="nav-link" href="{{  url('liste_bien')  }}"> Listes Bien
+                               
+                                </a></li>
+
                         </ul>
                     </div>
                 </li>
 
 
-
                 <li class="nav-item menu-items">
-                    <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false"
-                        aria-controls="auth">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-security"></i>
-                        </span>
-                        <span class="menu-title">Bien</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="auth">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="{{ url('ajout_bien') }}"> Ajouter Bien
-                                </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ url('liste_bien') }}"> Listes Bien
-                                </a></li>
-
-                        </ul>
-                    </div>
-                </li>
-
-
-                <li class="nav-item menu-items">
-                    <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false"
-                        aria-controls="auth">
+                    <a class="nav-link" data-toggle="collapse" href="#auth  " aria-expanded="false"
+                       aria-controls="auth">
                         <span class="menu-icon">
                             <i class="mdi mdi-security"></i>
                         </span>record
@@ -177,50 +185,13 @@
                     </a>
                     <div class="collapse" id="auth">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Ajouter
-                                    Commentaire </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> Supprimer
-                                    Commentaire </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{url('listercommentaire')}}"> Liste Commentaire </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{url('liste_bien')}}"> Listes Bien </a></li>
 
                         </ul>
                     </div>
                 </li>
 
-
-
-                <li class="nav-item menu-items">
-                    <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false"
-                        aria-controls="auth">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-security"></i>
-                        </span>
-                        <span class="menu-title">User Pages</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="auth">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank
-                                    Page </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a>
-                            </li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a>
-                            </li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a>
-                            </li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register
-                                </a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item menu-items">
-                    <a class="nav-link"
-                        href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-file-document-box"></i>
-                        </span>
-                        <span class="menu-title">Documentation</span>
-                    </a>
-                </li>
             </ul>
         </nav>
         <!-- partial -->
@@ -396,104 +367,78 @@
                         </li>
                 </div>
             </nav>
-            
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    @if (! session()->has('message'))
+                    @if (session()->has('message'))
+                        <div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
+                    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
                     <div class="titre">
                         <h1>Ajouter Bien</h1>
                         <form action="ajout_bien" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="form-label mt-4 my-4">Nom Bien</label>
-                                <input name="nom" type="text" class="form-control @error('nom') is-invalid @enderror" 
-                                    aria-describedby="nameHelp" placeholder="Entrer le nom " value="{{old('nom')}}">
-                                    @error('nom')
-                                    <div class="invalid-feedback">
-                                    {{ $errors->first('nom')}}
-                                    </div>
-                                    @enderror
+                                <input name="nom" type="text" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="nameHelp" placeholder="Entrer le nom">
                             </div>
 
                             <div class="designe">
                                 <label for="">Description</label>
-                                <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" cols="53" rows="5"
-                                    placeholder="Mettez la description">{{old('description')}}</textarea>
-                                    @error('description')
-                                    <div class="invalid-feedback">
-                                    {{ $errors->first('description')}}
-                                    </div>
-                                    @enderror
+                                <textarea name="description" class="form-control" id="description" cols="53" rows="5"
+                                    placeholder="Mettez la description"></textarea>
                             </div>
                             <div class="designe">
                                 <label for="">Adresse</label>
-                                <input name="addresse" type="text" class="form-control @error('addresse') is-invalid @enderror" value="{{old('addresse')}}">
+                                <input name="addresse" type="text" class="form-control">
                             </div>
-                            @error('addresse')
-                                    <div class="invalid-feedback">
-                                    {{ $errors->first('addresse')}}
-                                    </div>
-                                    @enderror
                             <div class="form-group">
                                 <label class="form-label mt-4">Date</label>
-                                <input name="date" type="date" class="form-control @error('date') is-invalid @enderror"
-                                    placeholder="Entrez la date" value="{{old('date')}}">
-                                    @error('date')
-                                    <div class="invalid-feedback">
-                                    {{ $errors->first('date')}}
-                                    </div>
-                                    @enderror
+                                <input name="date" type="date" class="form-control"
+                                    placeholder="Entrez la date">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label mt-3">Image</label>
-                                <input name="image" type="file" class="form-control @error('image') is-invalid @enderror"
-                                    aria-label="file example" value="{{old('image')}}">
+                                <input name="image" type="file" class="form-control"
+                                    aria-label="file example @error('image') is_invalid @enderror">
                                 @error('image')
                                     <div class="invalid-feedback">{{ $errors->first('image') }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="exampleSelect1" class="form-label @error('status') is-invalid @enderror">Status</label>
-                                <select name="status" class="form-select" id="exampleSelect1" value="{{old('status')}}">
+                                <label for="exampleSelect1" class="form-label">Status</label>
+                                <select name="status" class="form-select" id="exampleSelect1">
                                     <option>Occupe</option>
                                     <option>Non-Occuper</option>
                                 </select>
-                                @error('status')
-                                    <div class="invalid-feedback">
-                                    {{ $errors->first('status')}}
-                                    </div>
-                                    @enderror
-                                <label for="exampleSelect1" class="form-label @error('categorie') is-invalid @enderror">categorie</label>
-                                <select name="categorie" class="form-select" id="exampleSelect1" value="{{old('categorie')}}">
+                                <label for="exampleSelect1" class="form-label ">categorie</label>
+                                <select name="categorie" class="form-select" id="exampleSelect1">
                                     <option>Luxe</option>
                                     <option>Moyenne</option>
                                     <option>Faible</option>
                                 </select>
-                                @error('categorie')
-                                    <div class="invalid-feedback">
-                                    {{ $errors->first('categorie')}}
-                                    </div>
-                                    @enderror
                             </div>
 
-                            <div class="mb-3">
-                                <button class="btn btn-primary" type="submit">Enregistrer</button>
-                            </div>
-                        </form>
-                        @endif
-                        @if(session()->has('message'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session()->get('message')}}
-                        </div>
-                        <a href="liste_bien">
-                            <div class="btn btn-primary">Voir liste</div>
-                        </a>
-                        @endif
+           <div>
 
-                    
-                    </div>
+          <input type="submit" name="ajouter" id="titre" value="Ajouter">
+           </div>
+           </form>
+           </div>
 
                 </div>
             </div>

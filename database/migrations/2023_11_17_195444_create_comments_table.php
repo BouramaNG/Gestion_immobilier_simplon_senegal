@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('content');
             $table->dateTime('publication_date');
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('property_id')->constrained('properties');
+            $table->foreignId('bien_id')->constrained('properties');
             $table->timestamps();
         });
     }
