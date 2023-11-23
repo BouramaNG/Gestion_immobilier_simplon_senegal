@@ -72,7 +72,6 @@ Route::delete('listercommentaire/{id}', [CommentaireController::class,'destroy']
 
 
 
-
 Route::middleware(['auth','role:admin'])->group(function () {
 
     Route::get('/dashboard', [AdminController::class,'AdminDashboard'])->name('admin.dashboard');
@@ -84,11 +83,8 @@ Route::middleware(['auth','role:admin'])->group(function () {
 Route::get('add_admin', [AdminController::class,'AdAdmin'])->name('add.admin');
 Route::post('/add/admin', [AdminController::class,'addAdmin'])->name('add.admin');
 
-//ALL MY ROUTE THAT I ADD IN THIS PROJECT
-Route::get('ajout_bien', [BienController::class,'index']);
-Route::post('ajout_bien', [BienController::class,'store']);
-Route::delete('liste_bien/{id}', [BienController::class,'delete']);
-Route::get('liste_bien', [BienController::class,'show'])->name('liste.bien');
+Route::get('ajout_bien', [BienController::class,'AjoutBien'])->name('ajout.bien');
+Route::get('liste_bien', [BienController::class,'ListeBien'])->name('liste.bien');
 Route::get('liste_user',[AdminController::class,'ListeUser'])->name('liste.user');
 Route::post('/inactive_user/{id}',[AdminController::class,'InactiveUser'])->name('inactive.user');
 Route::get('/',[AdminController::class,'Desactivation'])->name('desactiver');
@@ -112,6 +108,4 @@ Route::post('Ajoutercommentaire/{id}', [CommentaireController::class,'Ajoutercom
 Route::get('listercommentaire', [CommentaireController::class,'Listercommentaire'])->name('admin.VoirCommentaire');
 Route::get('commentaire', [CommentaireController::class,'Commentaire'])->name('frontend.VoirCommentaire');
 Route::delete('listercommentaire/{id}', [CommentaireController::class,'destroy']);
-Route::get('modifier/{id}', [BienController::class,'edit']);
-Route::put('modifier/{id}', [BienController::class, 'update']);
 require __DIR__.'/auth.php';

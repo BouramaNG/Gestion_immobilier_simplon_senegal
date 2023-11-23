@@ -177,11 +177,11 @@
                             </div>
                         </div>
                         <div class="preview-item-content">
-                         <form action="{{route('logout')}}" method="post">
+                        <form action="{{route('logout')}}" method="post">
                             @csrf
-@method('post')
-                         <button type="submit" class="preview-subject mb-1">Deconnexion</button>
-                         </form>
+                            @method('post')
+                        <button type="submit" class="preview-subject mb-1">Deconnexion</button>
+                        </form>
                         </div>
                     </a>
                     <div class="dropdown-divider"></div>

@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('bien_id');
             $table->text('content');
             $table->dateTime('publication_date');
             $table->foreignId('user_id')->constrained('users');

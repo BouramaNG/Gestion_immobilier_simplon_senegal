@@ -51,122 +51,114 @@
 
 <body>
     <div class="container-scroller">
-          <!-- partial:partials/_sidebar.html -->
-          <nav class="sidebar sidebar-offcanvas" id="sidebar">
-                <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-                      <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg"
-                                                                          
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+                <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg"
                         alt="logo" /></a>
-                      <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg"
-                                                                               
+                <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg"
                         alt="logo" /></a>
-                </div>
-              <ul class="nav">
-                  <li class="nav-item profile">
-                      <div class="profile-desc">
-                          <div class="profile-pic">
-                              <div class="count-indicator">
-                                  <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg" alt="">
-                                  <span class="count bg-success"></span>
-                              </div>
-                              <div class="profile-name">
-                                  <h5 class="mb-0 font-weight-normal">{{Auth::user()->prenom}}</h5>
-                                  <span>Gold Member</span>
-                              </div>
-                          </div>
-                          <a href="#" id="profile-dropdown" data-toggle="dropdown"><i
-                               
+            </div>
+            <ul class="nav">
+                <li class="nav-item profile">
+                    <div class="profile-desc">
+                        <div class="profile-pic">
+                            <div class="count-indicator">
+                                <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg" alt="">
+                                <span class="count bg-success"></span>
+                            </div>
+                            <div class="profile-name">
+                                <h5 class="mb-0 font-weight-normal">{{ Auth::user()->prenom }}</h5>
+                                <span>Gold Member</span>
+                            </div>
+                        </div>
+                        <a href="#" id="profile-dropdown" data-toggle="dropdown"><i
                                 class="mdi mdi-dots-vertical"></i></a>
-                          <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
-                            
+                        <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
                             aria-labelledby="profile-dropdown">
-                              <a href="#" class="dropdown-item preview-item">
-                                  <div class="preview-thumbnail">
-                                      <div class="preview-icon bg-dark rounded-circle">
-                                          <i class="mdi mdi-settings text-primary"></i>
-                                      </div>
-                                  </div>
-                                  <div class="preview-item-content">
-                                      <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
-                                  </div>
-                              </a>
-                              <div class="dropdown-divider"></div>
-                              <a href="#" class="dropdown-item preview-item">
-                                  <div class="preview-thumbnail">
-                                      <div class="preview-icon bg-dark rounded-circle">
-                                          <i class="mdi mdi-onepassword  text-info"></i>
-                                      </div>
-                                  </div>
-                                  <div class="preview-item-content">
-                                      <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
-                                  </div>
-                              </a>
-                              <div class="dropdown-divider"></div>
-                              <a href="#" class="dropdown-item preview-item">
-                                  <div class="preview-thumbnail">
-                                      <div class="preview-icon bg-dark rounded-circle">
-                                          <i class="mdi mdi-calendar-today text-success"></i>
-                                      </div>
-                                  </div>
-                                  <div class="preview-item-content">
-                                      <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
-                                  </div>
-                              </a>
-                          </div>
-                      </div>
-                  </li>
-                  <li class="nav-item nav-category">
-                      <span class="nav-link">Navigation</span>
-                  </li>
-                  <li class="nav-item menu-items">
-                      <a class="nav-link" href="{{url('dashboard')}}">
-                                  <span class="menu-icon">
-                                        <i class="mdi mdi-speedometer"></i>
-                                  </span>
-                          <span class="menu-title">Dashboard</span>
-                      </a>
-                  </li>
-                  <li class="nav-item menu-items">
-                      <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                      
+                            <a href="#" class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-dark rounded-circle">
+                                        <i class="mdi mdi-settings text-primary"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-dark rounded-circle">
+                                        <i class="mdi mdi-onepassword  text-info"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-dark rounded-circle">
+                                        <i class="mdi mdi-calendar-today text-success"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item nav-category">
+                    <span class="nav-link">Navigation</span>
+                </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" href="{{ url('dashboard') }}">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-speedometer"></i>
+                        </span>
+                        <span class="menu-title">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
                         aria-controls="ui-basic">
-                                  <span class="menu-icon">
-                                        <i class="mdi mdi-laptop"></i>
-                                  </span>
-                          <span class="menu-title">Gestion Utilisateur</span>
-                          <i class="menu-arrow"></i>
-                      </a>
-                      <div class="collapse" id="ui-basic">
-                          <ul class="nav flex-column sub-menu">
-                              <li class="nav-item"> <a class="nav-link" href="{{url('liste_user')}}">Liste Utilisateur</a>
+                        <span class="menu-icon">
+                            <i class="mdi mdi-laptop"></i>
+                        </span>
+                        <span class="menu-title">Gestion Utilisateur</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('liste_user') }}">Liste
+                                    Utilisateur</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('add_admin') }}">Ajouter Admin</a>
                             </li>
-                              <li class="nav-item"> <a class="nav-link"
-                                    href="{{url('add_admin')}}">Ajouter Admin</a></li>
-                              <li class="nav-item"> <a class="nav-link"
+                            <li class="nav-item"> <a class="nav-link"
                                     href="pages/ui-features/typography.html">Typography</a></li>
-                          </ul>
-                      </div>
-                  </li>
+                        </ul>
+                    </div>
+                </li>
 
 
 
-                  <li class="nav-item menu-items">
-                      <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false"
-                      
+                <li class="nav-item menu-items">
+                    <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false"
                         aria-controls="auth">
-                                  <span class="menu-icon">
-                                        <i class="mdi mdi-security"></i>
-                                  </span>
-                          <span class="menu-title">Bien</span>
-                          <i class="menu-arrow"></i>
-                      </a>
-                      <div class="collapse" id="auth">
-                          <ul class="nav flex-column sub-menu">
-                              <li class="nav-item"> <a class="nav-link" href="{{  url('ajout_bien')  }}"> Ajouter Bien
-                               
+                        <span class="menu-icon">
+                            <i class="mdi mdi-security"></i>
+                        </span>
+                        <span class="menu-title">Bien</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="auth">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('ajout_bien') }}"> Ajouter Bien
                                 </a></li>
-                              <li class="nav-item"> <a class="nav-link" href="{{  url('liste_bien')  }}"> Listes Bien
-                               
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('liste_bien') }}"> Listes Bien
                                 </a></li>
 
                         </ul>
@@ -176,7 +168,7 @@
 
                 <li class="nav-item menu-items">
                     <a class="nav-link" data-toggle="collapse" href="#auth  " aria-expanded="false"
-                       aria-controls="auth">
+                        aria-controls="auth">
                         <span class="menu-icon">
                             <i class="mdi mdi-security"></i>
                         </span>record
@@ -185,8 +177,10 @@
                     </a>
                     <div class="collapse" id="auth">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="{{url('listercommentaire')}}"> Liste Commentaire </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{url('liste_bien')}}"> Listes Bien </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('listercommentaire') }}"> Liste
+                                    Commentaire </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('liste_bien') }}"> Listes Bien
+                                </a></li>
 
                         </ul>
                     </div>
@@ -370,22 +364,17 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    @if (session()->has('message'))
-                        <div class="alert alert-success">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                            {{ session()->get('message') }}
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
                     @endif
-                    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
+                    @if (!session()->has('success'))
+                        
                     <div class="titre">
                         <h1>Ajouter Bien</h1>
                         <form action="ajout_bien" method="POST" enctype="multipart/form-data">
@@ -421,24 +410,32 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleSelect1" class="form-label">Status</label>
-                                <select name="status" class="form-select" id="exampleSelect1">
+                                <select name="status" class="form-select " >
                                     <option>Occupe</option>
                                     <option>Non-Occuper</option>
                                 </select>
                                 <label for="exampleSelect1" class="form-label ">categorie</label>
-                                <select name="categorie" class="form-select" id="exampleSelect1">
+                                <select name="categorie" class="form-select @error('categorie') is_invalid @enderror" >
                                     <option>Luxe</option>
                                     <option>Moyenne</option>
                                     <option>Faible</option>
                                 </select>
+                                @error('categorie')
+                                <div class="invalid-feedback">{{ $errors->first('categorie') }}</div>
+                            @enderror
                             </div>
 
-           <div>
-
-          <input type="submit" name="ajouter" id="titre" value="Ajouter">
-           </div>
-           </form>
-           </div>
+                            <div class="mb-3">
+                                <button class="btn btn-primary" type="submit">Enregistrer</button>
+                            </div>
+                        </form>
+                    @endif
+                    @if (session()->has('success'))
+                    <div class="alert alert-primary" role="alert">
+                        {{session()->get('success')}}
+                    </div>
+                    @endif
+                    </div>
 
                 </div>
             </div>

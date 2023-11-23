@@ -55,9 +55,9 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
                 <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg"
-                                                                           alt="logo" /></a>
+                        alt="logo" /></a>
                 <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg"
-                                                                                alt="logo" /></a>
+                        alt="logo" /></a>
             </div>
             <ul class="nav">
                 <li class="nav-item profile">
@@ -68,14 +68,14 @@
                                 <span class="count bg-success"></span>
                             </div>
                             <div class="profile-name">
-                                <h5 class="mb-0 font-weight-normal">{{Auth::user()->prenom}}</h5>
+                                <h5 class="mb-0 font-weight-normal">{{ Auth::user()->prenom }}</h5>
                                 <span>Gold Member</span>
                             </div>
                         </div>
                         <a href="#" id="profile-dropdown" data-toggle="dropdown"><i
                                 class="mdi mdi-dots-vertical"></i></a>
                         <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
-                             aria-labelledby="profile-dropdown">
+                            aria-labelledby="profile-dropdown">
                             <a href="#" class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
                                     <div class="preview-icon bg-dark rounded-circle">
@@ -115,7 +115,7 @@
                     <span class="nav-link">Navigation</span>
                 </li>
                 <li class="nav-item menu-items">
-                    <a class="nav-link" href="{{url('dashboard')}}">
+                    <a class="nav-link" href="{{ url('dashboard') }}">
                         <span class="menu-icon">
                             <i class="mdi mdi-speedometer"></i>
                         </span>
@@ -124,7 +124,7 @@
                 </li>
                 <li class="nav-item menu-items">
                     <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                       aria-controls="ui-basic">
+                        aria-controls="ui-basic">
                         <span class="menu-icon">
                             <i class="mdi mdi-laptop"></i>
                         </span>
@@ -133,9 +133,12 @@
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="{{url('liste_user')}}">Liste Utilisateur</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{url('add_admin')}}">Ajouter Admin</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('liste_user') }}">Liste
+                                    Utilisateur</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('add_admin') }}">Ajouter Admin</a>
+                            </li>
+                            <li class="nav-item"> <a class="nav-link"
+                                    href="pages/ui-features/typography.html">Typography</a></li>
                         </ul>
                     </div>
                 </li>
@@ -144,7 +147,7 @@
 
                 <li class="nav-item menu-items">
                     <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false"
-                       aria-controls="auth">
+                        aria-controls="auth">
                         <span class="menu-icon">
                             <i class="mdi mdi-security"></i>
                         </span>
@@ -165,7 +168,7 @@
 
                 <li class="nav-item menu-items">
                     <a class="nav-link" data-toggle="collapse" href="#auth  " aria-expanded="false"
-                       aria-controls="auth">
+                        aria-controls="auth">
                         <span class="menu-icon">
                             <i class="mdi mdi-security"></i>
                         </span>record
@@ -174,8 +177,10 @@
                     </a>
                     <div class="collapse" id="auth">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="{{url('listercommentaire')}}"> Liste Commentaire </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{url('liste_bien')}}"> Listes Bien </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('listercommentaire') }}"> Liste
+                                    Commentaire </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('liste_bien') }}"> Listes Bien
+                                </a></li>
 
                         </ul>
                     </div>
@@ -375,7 +380,8 @@
                         <h1>Modifier le produit</h1>
 
 
-                        <form action="{{ url('modifier', $bien->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ url('modifier', $bien->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @method('put')
                             @csrf
                             <div class="form-group">
@@ -560,7 +566,8 @@
                     <div class="profile-desc">
                         <div class="profile-pic">
                             <div class="count-indicator">
-                                <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg" alt="">
+                                <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg"
+                                    alt="">
                                 <span class="count bg-success"></span>
                             </div>
                             <div class="profile-name">
@@ -629,7 +636,8 @@
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a>
+                            <li class="nav-item"> <a class="nav-link"
+                                    href="pages/ui-features/buttons.html">Buttons</a>
                             </li>
                             <li class="nav-item"> <a class="nav-link"
                                     href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
@@ -900,84 +908,75 @@
                             <input type="hidden" value="{{ $bien->id }}" id="id">
                         </div>
                         @if (session()->has('update'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session()->get('update') }}
-                        </div>
-                        <a href="#"><div class="btn btn-primary">voir liste</div></a>
-                    @endif
-                    @if (!session()->has('update'))
-                    <h1>Modifier le produit</h1>
-                        
-
-                    <form action="{{ url('modifier', $bien->id) }}" method="POST" enctype="multipart/form-data">
-                        @method('put')
-                        @csrf
-                        <div class="form-group">
-                            <label for="exampleInputEmail1" class="form-label mt-4 my-4"></label>
-                            <input name="nom" type="text" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="nameHelp" value="{{ $bien->nom }}">
-                        </div>
-
-                        <div class="designe">
-                            <label for="">Description</label>
-                            <textarea name="description" class="form-control" id="description" cols="53" rows="5">{{ $bien->description }}</textarea>
-                        </div>
-                        <div class="designe">
-                            <label for="">Adresse</label>
-                            <input name="addresse" type="text" class="form-control"
-                                value="{{ $bien->addresse }}">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label mt-4">Date</label>
-                            <input name="date" type="date" class="form-control"
-                                value="{{ $bien->date }}">
-                        </div>
-
-
-                        <div class="mb-3">
-                            <label class="form-label mt-3">Image actuelle</label>
-                            <img src="{{ asset('storage/' . $bien->image) }}" alt="Current Image"
-                                class="img-thumbnail" style="max-width: 100px;">
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label mt-3">Nouvelle Image</label>
-                            <input name="image" type="file" class="form-control"
-                                aria-label="file example @error('image') is_invalid @enderror">
-                            @error('image')
-                                <div class="invalid-feedback">{{ $errors->first('image') }}</div>
-                            @enderror
-                        </div>
-
-
-
-
-                        <div class="form-group">
-                            <label for="exampleSelect1" class="form-label">Status</label>
-                            <select name="status" class="form-select" id="exampleSelect1">
-                                <option>{{ $bien->status }}</option>
-                                <option>Non-occuper</option>
-                            </select>
-                            <label for="exampleSelect1" class="form-label ">categorie</label>
-                            <select name="categorie" class="form-select" id="exampleSelect1">
-                                <option>{{ $bien->categorie }}</option>
-                                <option>Luxe</option>
-                                <option>Moyenne</option>
-                                <option>Faible</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <a href="{{ url('liste_bien') }}">
-
-                                <button class="btn btn-primary" type="submit">Enregistrer Modifcation</button>
+                            <div class="alert alert-success" role="alert">
+                                {{ session()->get('update') }}
+                            </div>
+                            <a href="#">
+                                <div class="btn btn-primary">voir liste</div>
                             </a>
-                        </div>
-                    </form>
-                    @endif
-                </div>
-                      
-
+                        @endif
+                        @if (!session()->has('update'))
+                            <h1>Modifier le produit</h1>
+                            <form action="{{ url('modifier', $bien->id) }}" method="POST"
+                                enctype="multipart/form-data">
+                                @method('put')
+                                @csrf
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label mt-4 my-4"></label>
+                                    <input name="nom" type="text" class="form-control"
+                                        id="exampleInputEmail1" aria-describedby="nameHelp"
+                                        value="{{ $bien->nom }}">
+                                </div>
+                                <div class="designe">
+                                    <label for="">Description</label>
+                                    <textarea name="description" class="form-control" id="description" cols="53" rows="5">{{ $bien->description }}</textarea>
+                                </div>
+                                <div class="designe">
+                                    <label for="">Adresse</label>
+                                    <input name="addresse" type="text" class="form-control"
+                                        value="{{ $bien->addresse }}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label mt-4">Date</label>
+                                    <input name="date" type="date" class="form-control"
+                                        value="{{ $bien->date }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label mt-3">Image actuelle</label>
+                                    <img src="{{ asset('storage/' . $bien->image) }}" alt="Current Image"
+                                        class="img-thumbnail" style="max-width: 100px;">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label mt-3">Nouvelle Image</label>
+                                    <input name="image" type="file" class="form-control"
+                                        aria-label="file example @error('image') is_invalid @enderror">
+                                    @error('image')
+                                        <div class="invalid-feedback">{{ $errors->first('image') }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleSelect1" class="form-label">Status</label>
+                                    <select name="status" class="form-select" id="exampleSelect1">
+                                        <option>{{ $bien->status }}</option>
+                                        <option>Non-occuper</option>
+                                    </select>
+                                    <label for="exampleSelect1" class="form-label ">categorie</label>
+                                    <select name="categorie" class="form-select" id="exampleSelect1">
+                                        <option>{{ $bien->categorie }}</option>
+                                        <option>Luxe</option>
+                                        <option>Moyenne</option>
+                                        <option>Faible</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <a href="{{ url('liste_bien') }}">
+                                        <button class="btn btn-primary" type="submit">Enregistrer
+                                            Modifcation</button>
+                                    </a>
+                                </div>
+                            </form>
+                        @endif
+                    </div>
                 </div>
             </div>
             <!-- content-wrapper ends -->
@@ -1028,5 +1027,4 @@
     </script>
     <!-- End custom js for this page -->
 </body>
-
 </html>

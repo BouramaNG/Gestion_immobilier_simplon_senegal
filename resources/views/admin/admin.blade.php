@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group">
                         <label for="adminPassword">Admin Password:</label>
-                        <input type="password" class="form-control" id="adminPassword" name="adminPassword" required>
+                        <input type="password" class="form-control" name="adminPassword" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Add Admin</button>
                 </form>

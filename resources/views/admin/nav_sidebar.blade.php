@@ -1,9 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-        <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg"
-                                                                   alt="logo" /></a>
-        <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg"
-                                                                        alt="logo" /></a>
+        <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
+        <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg">                                                                alt="logo" /></a>
     </div>
     <ul class="nav">
         <li class="nav-item profile">
@@ -18,10 +16,8 @@
                         <span>Gold Member</span>
                     </div>
                 </div>
-                <a href="#" id="profile-dropdown" data-toggle="dropdown"><i
-                        class="mdi mdi-dots-vertical"></i></a>
-                <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
-                     aria-labelledby="profile-dropdown">
+                <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
+                <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
                     <a href="#" class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
                             <div class="preview-icon bg-dark rounded-circle">
@@ -69,8 +65,7 @@
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
-               aria-controls="ui-basic">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                         <span class="menu-icon">
                             <i class="mdi mdi-laptop"></i>
                         </span>
@@ -85,12 +80,8 @@
                 </ul>
             </div>
         </li>
-
-
-
         <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false"
-               aria-controls="auth">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                         <span class="menu-icon">
                             <i class="mdi mdi-security"></i>
                         </span>
@@ -103,15 +94,11 @@
                         </a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ url('liste_bien') }}"> Listes Bien
                         </a></li>
-
                 </ul>
             </div>
         </li>
-
-
         <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#auth  " aria-expanded="false"
-               aria-controls="auth">
+            <a class="nav-link" data-toggle="collapse" href="#auth  " aria-expanded="false" aria-controls="auth">
                         <span class="menu-icon">
                             <i class="mdi mdi-security"></i>
                         </span>record
@@ -122,10 +109,8 @@
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{url('listercommentaire')}}"> Liste Commentaire </a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{url('liste_bien')}}"> Listes Bien </a></li>
-
                 </ul>
             </div>
         </li>
-
     </ul>
 </nav>
