@@ -20,7 +20,14 @@ class BienController extends Controller
             "nom" => "required|string|min:3",
             "categorie" => "required|string",
             "image" => "required|image|max:5000",
+            "multi_image"=> "required|image",
             "description" => "required|string|min:5",
+            "dimension_bien"=> "required|integer",
+            "nombre_chambre"=> "required|integer",
+            "dimension_chambre"=> "requires|integer",
+            "nombre_toillette"=> "required|integer",
+            "balcons"=> "required|integer",
+            "space_vert"=> "required|enum",
             "addresse" => "required|string",
             "status" => "required|string",
             "date" => "required|date",
@@ -35,6 +42,15 @@ class BienController extends Controller
         // $request->image->move('product', $imagename);
         // $bien->image= $imagename;
         $bien->image = $this->storeImage($request->file('image'));
+        // $bien->multi_image = $request->multi_image;
+        // POUR MULTI IMAGE
+        // $bien->multi_image = $this->storeImage($request->file('multi_image'));
+        $bien->dimension_bien = $request->dimension_bien;
+        $bien->nombre_chambre = $request->nombre_chambre;
+        $bien->dimension_chambre = $request->dimension_chambre;
+        $bien->nombre_toillette = $request->nombre_toillette;
+        $bien->balcons = $request->balcons;
+        $bien->space_vert = $request->space_vert;
         $bien->description = $request->description;
         $bien->addresse = $request->addresse;
         $bien->status = $request->status;
@@ -44,8 +60,9 @@ class BienController extends Controller
     }
     private function storeImage($image): string
     {
-        return $image->store('avatars', 'public');
+        return $image->store('multi_image', 'public');
     }
+
     public function delete($id)
     {
         $bien = Propertie::find($id);

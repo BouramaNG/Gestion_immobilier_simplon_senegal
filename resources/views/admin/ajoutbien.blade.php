@@ -382,8 +382,47 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="form-label mt-4 my-4">Nom Bien</label>
                                 <input name="nom" type="text" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="nameHelp" placeholder="Entrer le nom">
+                                aria-describedby="nameHelp" placeholder="Entrer le nom">
                             </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label mt-3">Image du bien</label>
+                                <input name="image" type="file" class="form-control"
+                                    aria-label="file example @error('image') is_invalid @enderror">
+                                @error('image')
+                                    <div class="invalid-feedback">{{ $errors->first('image') }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="designe">
+                                <label >Dimension Bien</label>
+                                <input name="dimension_bien" type="number" class="form-control" placeholder="Entrez les dimensions du bien en m2">
+                            </div>
+
+                            <div class="designe">
+                                <label for="">Nombre de chambre</label>
+                                <input name="nombre_chambre" type="number" class="form-control" placeholder="Entres le nombre de chambre">
+                            </div>
+                            
+                            <div class="designe">
+                                <label >Dimension chambre</label>
+                                <input name="dimension_chambre" type="number" class="form-control" placeholder="Entrez les dimensions du chambre en m2">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label mt-3">Ajouter d'autres images</label>
+                                <input name="multi_image"  type="file" class="form-control" aria-label="file example" multiple>
+                            </div>
+
+                            <div class="designe">
+                                <label >Nombre de toillette</label>
+                                <input name="nombre_toillette" type="number" class="form-control" placeholder="Entrez le nombre de toillette">
+                            </div>
+
+                            <div class="designe">
+                                <label >balcons</label>
+                                <input name="balcons" type="number" class="form-control" placeholder="Entrez le nombre de balcon">
+                            </div>
+
 
                             <div class="designe">
                                 <label for="">Description</label>
@@ -392,7 +431,7 @@
                             </div>
                             <div class="designe">
                                 <label for="">Adresse</label>
-                                <input name="addresse" type="text" class="form-control">
+                                <input name="addresse" type="text" class="form-control" placeholder="Entrez l'addresse du bien  ">
                             </div>
                             <div class="form-group">
                                 <label class="form-label mt-4">Date</label>
@@ -400,14 +439,6 @@
                                     placeholder="Entrez la date">
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label mt-3">Image</label>
-                                <input name="image" type="file" class="form-control"
-                                    aria-label="file example @error('image') is_invalid @enderror">
-                                @error('image')
-                                    <div class="invalid-feedback">{{ $errors->first('image') }}</div>
-                                @enderror
-                            </div>
                             <div class="form-group">
                                 <label for="exampleSelect1" class="form-label">Status</label>
                                 <select name="status" class="form-select " >
@@ -419,6 +450,11 @@
                                     <option>Luxe</option>
                                     <option>Moyenne</option>
                                     <option>Faible</option>
+                                </select>
+                                <label for="exampleSelect1" class="form-label ">Espace Vert</label>
+                                <select name="space_vert" class="form-select" >
+                                    <option value="oui">Oui</option>
+                                    <option value="non">Non</option>
                                 </select>
                                 @error('categorie')
                                 <div class="invalid-feedback">{{ $errors->first('categorie') }}</div>

@@ -16,9 +16,8 @@ return new class extends Migration
             $table->string('nom');
             $table->string('categorie');
             $table->string('image');
-            $table->string('multi_image');
             $table->string('description');
-            $table->foreignId('user_id')->constrained('users');
+            // $table->foreignId('user_id')->constrained('users');
             $table->float('dimension_bien');
             $table->integer('nombre_chambre');
             $table->float('dimension_chambre');
