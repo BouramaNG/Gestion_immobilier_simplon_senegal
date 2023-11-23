@@ -370,6 +370,3 @@ public function search()
     $this->authorize('search', Propertie::class);
 
 }
-
-
-}

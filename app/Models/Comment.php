@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Bien;
 use App\Models\User;
 use App\Models\Propertie;
 use Illuminate\Database\Eloquent\Model;
@@ -20,10 +19,5 @@ class Comment extends Model
     public function bien()
     {
         return $this->belongsTo(Bien::class);
-    }
-
-    public function bien()
-    {
-        return $this->belongsTo('App\Bien');
     }
 }
