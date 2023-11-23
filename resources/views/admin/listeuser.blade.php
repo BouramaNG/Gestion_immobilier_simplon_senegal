@@ -386,6 +386,7 @@
                                                     <th>Email </th>
                                                     <th>Role </th>
                                                     <th> Status </th>
+                                            <th> Role </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -416,6 +417,13 @@
                                                                     class="btn btn-success">{{ $users->status }}</button>
                                                             </form>
                                                         </td>
+                                            <td>
+                                                <form action="{{ route('change.role', ['id' => $users->id]) }}" method="post">
+                                                    @csrf
+                                                    @method ('post')
+                                                <button class="btn btn-success">{{$users->role}}</button>
+                                                </form>
+                                            </td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>

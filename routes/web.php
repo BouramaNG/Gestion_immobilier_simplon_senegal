@@ -88,7 +88,7 @@ Route::get('liste_bien', [BienController::class,'ListeBien'])->name('liste.bien'
 Route::get('liste_user',[AdminController::class,'ListeUser'])->name('liste.user');
 Route::post('/inactive_user/{id}',[AdminController::class,'InactiveUser'])->name('inactive.user');
 Route::get('/',[AdminController::class,'Desactivation'])->name('desactiver');
-
+Route::post('/change_role/{id}',[AdminController::class,'ChangeRole'])->name('change.role');
 
 //route pour les biens 
 Route::get('ajout_bien', [BienController::class,'index']);
