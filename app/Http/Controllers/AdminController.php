@@ -74,5 +74,17 @@ public function addAdmin(Request $request)
     return redirect()->back()->with('success', 'Admin added successfully');
 }
 
+public function ChangeRole(Request $request, $id)
+{
+   $users =  User::find($id);
+   if ($users) {
+      
+      $users->role =($users->role === 'user' ? 'admin' : 'user');
+      $users->save();
+      return redirect()->back()->with('message','vous avez changez le role avec succee');
 
+   }else {
+      return redirect()->back()->with('message','vous pouvez pas changer ce role');
+   }
+}
 }
