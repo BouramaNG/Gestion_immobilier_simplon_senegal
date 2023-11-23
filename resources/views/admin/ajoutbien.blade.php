@@ -468,18 +468,13 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="exampleSelect1" class="form-label @error('status') is-invalid @enderror">Status</label>
-                                <select name="status" class="form-select" id="exampleSelect1" value="{{old('status')}}">
+                                <label for="exampleSelect1" class="form-label">Status</label>
+                                <select name="status" class="form-select" id="exampleSelect1">
                                     <option>Occupe</option>
                                     <option>Non-Occuper</option>
                                 </select>
-                                @error('status')
-                                    <div class="invalid-feedback">
-                                    {{ $errors->first('status')}}
-                                    </div>
-                                    @enderror
-                                <label for="exampleSelect1" class="form-label @error('categorie') is-invalid @enderror">categorie</label>
-                                <select name="categorie" class="form-select" id="exampleSelect1" value="{{old('categorie')}}">
+                                <label for="exampleSelect1" class="form-label ">categorie</label>
+                                <select name="categorie" class="form-select" id="exampleSelect1">
                                     <option>Luxe</option>
                                     <option>Moyenne</option>
                                     <option>Faible</option>
@@ -496,8 +491,8 @@
                             
 
                             <div class="mb-3">
-    <button class="btn btn-primary" type="submit">Enregistrer</button>
-</div>
+                                <button class="btn btn-primary" type="submit">Enregistrer</button>
+                            </div>
                         </form>
                     @endif
                     @if (session()->has('success'))

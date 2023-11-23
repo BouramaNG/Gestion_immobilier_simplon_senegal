@@ -283,7 +283,7 @@ class BienController extends Controller
 
     private function storeImage($image): string
     {
-        return $image->store('avatars', 'public');
+        return $image->store('multi_image', 'public');
     }
 
 
