@@ -1,10 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
+
+
+
+
+
 use App\Models\Multi_img;
 use App\Models\Propertie;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
+// use Intervention\Image\Facades\Image as ImageIntervention;;
+// use Intervention\Image\Facades\Image;
+
+
+
+
 class BienController extends Controller
 {
     public function index()
@@ -13,16 +25,16 @@ class BienController extends Controller
     }
     public function show()
     {
-        $bien = Propertie::all();
-        $images = Multi_img::all();
-        return view("admin.listebien", compact("bien", "images"));
+        $user = Auth::user()->id;
+        $bien = Propertie::where('user_id',$user->id)->get();
+        return view("admin.listebien", compact("bien","user"));
     }
     public function store(Request $request)
     {
         $request->validate([
             "nom" => "required|string|min:3",
             "categorie" => "required|string",
-            "image" => "required|image|max:5000",
+            // "image" => "required|image|max:5000",
             "multi_image" => "required|image",
             "description" => "required|string|min:5",
             "dimension_bien" => "required|int",

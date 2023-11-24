@@ -447,6 +447,8 @@
                                         <td>{{ $produit->addresse }}</td>
                                         <td>{{ $produit->status }}</td>
                                         <td>{{ $produit->date }}</td>
+                                            <td>{{ $produit->user->name }}</td>
+
                                         <td>
                                             <form action="{{ route('bien.delete', ['id' => $produit->id]) }}"
                                                 method="POST">

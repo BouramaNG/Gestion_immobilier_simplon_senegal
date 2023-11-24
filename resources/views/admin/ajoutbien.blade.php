@@ -439,6 +439,50 @@
                                     placeholder="Entrez la date">
                             </div>
 
+                            <div class="mb-3">
+                                <label class="form-label mt-3">Image</label>
+                                <input name="image_unique" type="file" class="form-control"
+                                    aria-label="file example @error('image') is_invalid @enderror">
+                                @error('image')
+                                    <div class="invalid-feedback">{{ $errors->first('image') }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label mt-3">Multi Image</label>
+                                <input name="multi_image[]" type="file" class="form-control" aria-label="file example @error('multi_image') is_invalid @enderror" multiple>
+
+                                @error('image')
+                                    <div class="invalid-feedback">{{ $errors->first('image') }}</div>
+                                @enderror
+                            </div>
+                            <div class="designe">
+                                <label for="">Dimension Bien</label>
+                                <input name="dimension_bien" type="number" class="form-control">
+                            </div>
+                            <div class="designe">
+                                <label for="">Nombre chambres</label>
+                                <input name="nombre_chambre" type="number" class="form-control">
+                            </div>
+                            <div class="designe">
+                                <label for="">Dimension Chambre</label>
+                                <input name="dimension_chambre" type="number" class="form-control">
+                            </div>
+                            <div class="designe">
+                                <label for="">Nombre Toillete</label>
+                                <input name="nombre_toillete" type="number" class="form-control">
+                            </div>
+                            <div class="designe">
+                                <label for="">Balcon</label>
+                                <input name="balcon" type="number" class="form-control">
+                            </div>
+                            <div class="designe">
+                                <label for="">Espace Vert</label>
+                                <select name="espace" class="form-select" id="exampleSelect1">
+                                    <option>Oui</option>
+                                    <option>Nom</option>
+                                
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label for="exampleSelect1" class="form-label">Status</label>
                                 <select name="status" class="form-select " >

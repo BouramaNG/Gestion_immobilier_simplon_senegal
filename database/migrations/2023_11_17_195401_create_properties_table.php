@@ -17,12 +17,12 @@ return new class extends Migration
             $table->string('categorie');
             $table->string('image');
             $table->string('description');
-            // $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users');           
             $table->float('dimension_bien');
             $table->integer('nombre_chambre');
-            $table->float('dimension_chambre');
             $table->integer('nombre_toillette');
-            $table->integer('balcons');  
+            $table->integer('balcons');
+            $table->integer('nombre_bien')->nullable();
             $table->enum('space_vert',['oui','non'])->default('non');  
             $table->string('addresse');
             $table->string('status');
