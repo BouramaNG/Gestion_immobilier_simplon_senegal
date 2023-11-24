@@ -439,6 +439,8 @@
                                     placeholder="Entrez la date">
                             </div>
 
+<<<<<<< HEAD
+=======
                             <div class="mb-3">
                                 <label class="form-label mt-3">Image</label>
                                 <input name="image_unique" type="file" class="form-control"
@@ -483,6 +485,7 @@
                                 
                                 </select>
                             </div>
+>>>>>>> 55bce784feefe83007a1ed9401b9772882435e33
                             <div class="form-group">
                                 <label for="exampleSelect1" class="form-label">Status</label>
                                 <select name="status" class="form-select " >

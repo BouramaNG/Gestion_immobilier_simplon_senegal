@@ -108,4 +108,8 @@ Route::post('Ajoutercommentaire/{id}', [CommentaireController::class,'Ajoutercom
 Route::get('listercommentaire', [CommentaireController::class,'Listercommentaire'])->name('admin.VoirCommentaire');
 Route::get('commentaire', [CommentaireController::class,'Commentaire'])->name('frontend.VoirCommentaire');
 Route::delete('listercommentaire/{id}', [CommentaireController::class,'destroy']);
+
+// Route pour ajouter des chambres
+Route::get('ajout_chambre', [BienController::class,'indexChambre']);
+Route::get('ajout_chambre', [BienController::class,'storeChambre']);
 require __DIR__.'/auth.php';

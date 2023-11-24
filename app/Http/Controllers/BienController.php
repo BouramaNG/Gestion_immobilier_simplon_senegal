@@ -10,7 +10,7 @@ use App\Models\Multi_img;
 use App\Models\Propertie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image;
+// use Intervention\Image\Facades\Image;
 // use Intervention\Image\Facades\Image as ImageIntervention;;
 // use Intervention\Image\Facades\Image;
 
@@ -26,7 +26,9 @@ class BienController extends Controller
     public function show()
     {
         $user = Auth::user()->id;
-        $bien = Propertie::where('user_id',$user->id)->get();
+        // $bien = Propertie::where('user_id',$user->id)->get();
+        $bien = Propertie::all();
+
         return view("admin.listebien", compact("bien","user"));
     }
     public function store(Request $request)
@@ -60,14 +62,14 @@ class BienController extends Controller
             'date.required' => 'Le champ Date est obligatoire.',
             'date.date' => 'Le champ Date doit être une date valide.',
         ]);
+
         $bien = new Propertie();
         $bien->nom = $request->nom;
         $bien->categorie = $request->categorie;
         $bien->image = $this->storeImage($request->file('image'));
         $bien->dimension_bien = $request->dimension_bien;
-        $bien->nombre_chambre = $request->nombre_chambre;
-        $bien->dimension_chambre = $request->dimension_chambre;
         $bien->nombre_toillette = $request->nombre_toillette;
+        $bien->nombre_chambre = $request->nombre_chambre;
         $bien->balcons = $request->balcons;
         $bien->space_vert = $request->space_vert;
         $bien->description = $request->description;
@@ -75,9 +77,9 @@ class BienController extends Controller
         $bien->status = $request->status;
         $bien->date = $request->date;
         $bien->save();
+        
         $images = $request->file('multi_image');
         $imagePaths = [];
-        // dd($images);
         foreach ($images as $images) {
             $imagePath = $this->storeMultiImage($images);
             $imagePaths[] = $imagePath;
@@ -86,6 +88,7 @@ class BienController extends Controller
             $multiImage->photo_name = $imagePath;
             $multiImage->save();
         }   
+        $bien->dimension_chambre = $request->dimension_chambre;
         return back()->with('success', 'Votre produit a été ajouter');
     }
     private function storeImage($image): string
@@ -162,5 +165,15 @@ class BienController extends Controller
     public function search()
     {
         $this->authorize('search', Propertie::class);
+    }
+
+    // Les methodes que j'ai ajouter pour chambres
+    public function indexChambre(Request $request)
+    {
+        return view('admin.ajoutChambre');
+    }
+    public function storeChambre(Request $request)
+    {
+        
     }
 }
