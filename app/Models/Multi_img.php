@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Multi_img extends Model
 {
     use HasFactory;
+    public function propertie()
+    {
+        return $this->belongsTo(Propertie::class);
+    }
 }

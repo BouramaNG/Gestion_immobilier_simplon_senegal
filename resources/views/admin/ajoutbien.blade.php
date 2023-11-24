@@ -68,7 +68,7 @@
                                 <span class="count bg-success"></span>
                             </div>
                             <div class="profile-name">
-                                <h5 class="mb-0 font-weight-normal">{{ Auth::user()->prenom }}</h5>
+                                <h5 class="mb-0 font-weight-normal">{{ Auth::user() }}</h5>
                                 <span>Gold Member</span>
                             </div>
                         </div>
@@ -410,7 +410,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label mt-3">Ajouter d'autres images</label>
-                                <input name="multi_image"  type="file" class="form-control" aria-label="file example" multiple>
+                                <input name="multi_image[]"  type="file" class="form-control" aria-label="file example" multiple>
                             </div>
 
                             <div class="designe">

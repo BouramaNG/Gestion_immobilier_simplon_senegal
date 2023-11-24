@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Multi_img;
 use App\Models\Propertie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 class BienController extends Controller
 {
     public function index()
@@ -12,7 +14,8 @@ class BienController extends Controller
     public function show()
     {
         $bien = Propertie::all();
-        return view("admin.listebien", compact("bien"));
+        $images = Multi_img::all();
+        return view("admin.listebien", compact("bien", "images"));
     }
     public function store(Request $request)
     {
@@ -20,31 +23,35 @@ class BienController extends Controller
             "nom" => "required|string|min:3",
             "categorie" => "required|string",
             "image" => "required|image|max:5000",
-            "multi_image"=> "required|image",
+            "multi_image" => "required|image",
             "description" => "required|string|min:5",
-            "dimension_bien"=> "required|integer",
-            "nombre_chambre"=> "required|integer",
-            "dimension_chambre"=> "requires|integer",
-            "nombre_toillette"=> "required|integer",
-            "balcons"=> "required|integer",
-            "space_vert"=> "required|enum",
+            "dimension_bien" => "required|int",
+            "nombre_chambre" => "required|int",
+            "dimension_chambre" => "required|int",
+            "nombre_toillette" => "required|int",
+            "balcons" => "required|int",
+            "space_vert" => "required",
             "addresse" => "required|string",
             "status" => "required|string",
             "date" => "required|date",
+        ],[
+            'nom.required' => 'Le champ Nom est obligatoire.',
+            'nom.min' => 'Le champ Nom doit avoir au moins :min caractères.',
+            'categorie.required' => 'Le champ Catégorie est obligatoire.',
+            'image.required' => 'Le champ Image est obligatoire.',
+            'image.image' => 'Le fichier doit être une image.',
+            'image.max' => 'L\'image ne doit pas dépasser :max kilo-octets.',
+            'description.required' => 'Le champ Description est obligatoire.',
+            'description.min' => 'Le champ Description doit avoir au moins :min caractères.',
+            'addresse.required' => 'Le champ Adresse est obligatoire.',
+            'status.required' => 'Le champ Statut est obligatoire.',
+            'date.required' => 'Le champ Date est obligatoire.',
+            'date.date' => 'Le champ Date doit être une date valide.',
         ]);
         $bien = new Propertie();
         $bien->nom = $request->nom;
         $bien->categorie = $request->categorie;
-        //I comment the Boura's method
-        //jeessais de modifier la partie importe image de Bass
-        // $image = $request->image;
-        // $imagename = time().'.'.$image->getClientOriginalExtension();
-        // $request->image->move('product', $imagename);
-        // $bien->image= $imagename;
         $bien->image = $this->storeImage($request->file('image'));
-        // $bien->multi_image = $request->multi_image;
-        // POUR MULTI IMAGE
-        // $bien->multi_image = $this->storeImage($request->file('multi_image'));
         $bien->dimension_bien = $request->dimension_bien;
         $bien->nombre_chambre = $request->nombre_chambre;
         $bien->dimension_chambre = $request->dimension_chambre;
@@ -56,26 +63,41 @@ class BienController extends Controller
         $bien->status = $request->status;
         $bien->date = $request->date;
         $bien->save();
+        $images = $request->file('multi_image');
+        $imagePaths = [];
+        // dd($images);
+        foreach ($images as $images) {
+            $imagePath = $this->storeMultiImage($images);
+            $imagePaths[] = $imagePath;
+            $multiImage = new Multi_img();
+            $multiImage->propertie_id = $bien->id; // Associez l'ID de la propriété
+            $multiImage->photo_name = $imagePath;
+            $multiImage->save();
+        }   
         return back()->with('success', 'Votre produit a été ajouter');
     }
     private function storeImage($image): string
     {
-        return $image->store('multi_image', 'public');
+        return $image->store('img', 'public');
     }
-
+    private function storeMultiImage($images)
+    {
+        return $images->store('multi_image','public');
+    }
     public function delete($id)
     {
         $bien = Propertie::find($id);
         $bien->destroy($id);
-        if ($bien->save()) 
-        {
+        if ($bien->save()) {
             return back()->with('delete', 'vous avez supprimer cette produit');
         }
     }
     public function edit($id)
     {
         $bien = Propertie::where(
-            'id', '=',$id
+            'id',
+            '=',
+            $id
         )->first();
         return view("admin.modifier", compact("bien"));
     }
@@ -106,8 +128,7 @@ class BienController extends Controller
         $bien = Propertie::find($id);
         $bien->nom = $request->nom;
         $bien->categorie = $request->categorie;
-        if ($request->hasFile('image')) 
-        {
+        if ($request->hasFile('image')) {
             $bien->image = $this->storeImage($request->file('image'));
         }
         $bien->description = $request->description;

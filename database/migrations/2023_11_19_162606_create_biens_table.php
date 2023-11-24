@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nom');
             $table->string('categorie');
             $table->string('image');
+            // $table->string('');
             $table->string('description');
             $table->string('addresse');
             $table->string('status');

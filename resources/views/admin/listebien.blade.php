@@ -68,7 +68,7 @@
                                 <span class="count bg-success"></span>
                             </div>
                             <div class="profile-name">
-                                <h5 class="mb-0 font-weight-normal">{{ Auth::user()->prenom }}</h5>
+                                <h5 class="mb-0 font-weight-normal">{{ Auth::user() }}</h5>
                                 <span>Gold Member</span>
                             </div>
                         </div>

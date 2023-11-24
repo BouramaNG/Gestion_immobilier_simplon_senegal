@@ -20,4 +20,8 @@ class Propertie extends Model
     {
         return $this->hasMany(Comment::class);
     }
+    public function multiImages()
+    {
+        return $this->hasMany(Multi_img::class);
+    }
 }
