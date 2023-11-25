@@ -444,9 +444,9 @@
                                         <tr>
                                             <td>{{$produit->id}}</td>
                                             <td>
-    <img src="{{ asset('product/' . $produit->image) }}"
-         alt="bien-avatar" style="max-width: 200px; max-height: 150px;">
-</td>
+                                                <img src="{{ asset('storage/' . $produit->image) }}"
+                                                    alt="bien-avatar" style="max-width: 200px; max-height: 150px;">
+                                            </td>
                                             <td>{{ $produit->nom }}</td>
                                             <td>{{ $produit->description }}</td>
                                             <td>{{ $produit->categorie }}</td>

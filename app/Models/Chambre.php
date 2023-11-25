@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Chambre extends Model
 {
     use HasFactory;
+    public function images()
+    {
+        return $this->hasMany(Multi_img::class, 'chambre_id');
+    }
 }
