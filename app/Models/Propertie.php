@@ -20,4 +20,9 @@ class Propertie extends Model
     {
         return $this->hasMany(Comment::class);
     }
+    public function chambres()
+    {
+        return $this->hasMany(Chambre::class);
+    }
+ 
 }

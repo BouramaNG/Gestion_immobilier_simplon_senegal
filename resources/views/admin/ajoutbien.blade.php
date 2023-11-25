@@ -377,7 +377,7 @@
 
                     <div class="titre">
                         <h1>Ajouter Bien</h1>
-                        <form action="ajout_bien" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('storeStep1') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="form-label mt-4 my-4">Nom Bien</label>
@@ -408,26 +408,18 @@
                                     <div class="invalid-feedback">{{ $errors->first('image') }}</div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label mt-3">Multi Image</label>
-                                <input name="multi_image[]" type="file" class="form-control" aria-label="file example @error('multi_image') is_invalid @enderror" multiple>
-
-                                @error('image')
-                                    <div class="invalid-feedback">{{ $errors->first('image') }}</div>
-                                @enderror
-                            </div>
+             
                             <div class="designe">
                                 <label for="">Dimension Bien</label>
                                 <input name="dimension_bien" type="number" class="form-control">
                             </div>
                             <div class="designe">
-                                <label for="">Nombre chambres</label>
-                                <input name="nombre_chambre" type="number" class="form-control">
-                            </div>
-                            <div class="designe">
-                                <label for="">Dimension Chambre</label>
-                                <input name="dimension_chambre" type="number" class="form-control">
-                            </div>
+    <label for="">Nombre de chambres</label>
+    <input name="nombre_chambre" id="nombre_chambre" type="number" class="form-control">
+</div>
+
+<div id="form-chambres-container"></div>
+                            
                             <div class="designe">
                                 <label for="">Nombre Toillete</label>
                                 <input name="nombre_toillete" type="number" class="form-control">
@@ -459,8 +451,8 @@
                             </div>
 
                             <div class="mb-3">
-                                <button class="btn btn-primary" type="submit">Enregistrer</button>
-                            </div>
+    <button class="btn btn-primary" type="submit">Enregistrer</button>
+</div>
                         </form>
                     </div>
 
@@ -512,6 +504,35 @@
             });
         });
     </script>
+    <!-- <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const nombreChambreInput = document.getElementById('nombre_chambre');
+        const formChambresContainer = document.getElementById('form-chambres-container');
+
+        nombreChambreInput.addEventListener('change', function () {
+            const nombreChambres = parseInt(nombreChambreInput.value);
+
+            // Effacez le contenu du conteneur existant
+            formChambresContainer.innerHTML = '';
+
+            // Affichez le formulaire des chambres pour chaque chambre
+            for (let i = 1; i <= nombreChambres; i++) {
+                formChambresContainer.innerHTML += `
+                    <div class="mb-3">
+                        <label for="dimension_chambre_${i}">Dimension de la chambre ${i}</label>
+                        <input name="dimension_chambre[]" id="dimension_chambre_${i}" type="number" class="form-control">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="image_chambre_${i}">Image de la chambre ${i}</label>
+                        <input name="image_chambre[]" id="image_chambre_${i}" type="file" class="form-control">
+                    </div>
+                `;
+            }
+        });
+    });
+</script> -->
+
     <!-- End custom js for this page -->
 </body>
 

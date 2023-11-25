@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Multi_img extends Model
 {
     use HasFactory;
-    protected $fillable = ['propertie_id', 'photo_name'];
+    protected $fillable = ['propertie_id', 'photo_name','chambre_id'];
+    public function chambre()
+    {
+        return $this->belongsTo(Chambre::class);
+    }
 }
