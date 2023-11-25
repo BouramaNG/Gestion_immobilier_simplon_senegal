@@ -121,11 +121,30 @@ public function showStep2($bien_id)
      
             "nombre_chambre" => "required|integer|min:1",
         ]);
+        $bien = new Propertie();
+        $bien->nom = $request->nom;
+        $bien->categorie = $request->categorie;
+        $bien->description = $request->description;
+        $bien->addresse = $request->addresse;
+        $bien->status = $request->status;
+        $bien->date = $request->date;
+        $bien->dimension_bien = $request->dimension_bien;
+        $bien->nombre_chambre = $request->nombre_chambre;
+        $bien->nombre_toillette = $request->nombre_toillete;
+        $bien->balcons = $request->balcon;
+        $bien->user_id = auth()->check() ? auth()->user()->id : null;
+        $bien->space_vert = $request->espace;
+        $image = $request->file('image_unique');
+        $imagename = time().'.'.$image->getClientOriginalExtension();
+        Image::make($image)->resize(800,800)->save('product/imageunique'.$imagename);
+        $saveUrl = 'product/imageunique'.$imagename;
+        $bien->image = $saveUrl;
     
-  
-        session(['nombre_chambres' => $request->nombre_chambre]);
+        $bien->save();
+        $bien_id = $bien->id;
     
-      
+        session(['nombre_chambres' => $request->nombre_chambre, 'bien_id' => $bien_id]);
+    
         return redirect()->route('showFormStep2');
     }
     
@@ -140,15 +159,13 @@ public function showStep2($bien_id)
     
     public function storeStep2(Request $request)
     {
-
         $request->validate([
-      
             'dimension_chambre.*' => 'required|numeric|min:1',
             'image_chambre.*' => 'required|image|max:5000',
         ]);
-   
+    
         $nombreChambres = count($request->dimension_chambre);
-        $bien_id = Propertie::latest()->first()->id; 
+        $bien_id = session('bien_id');
     
         for ($i = 0; $i < $nombreChambres; $i++) {
             $chambre = new Chambre();
@@ -168,8 +185,9 @@ public function showStep2($bien_id)
             $multiImg->save();
         }
     
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Les détails des chambres ont été ajoutés avec succès.');
     }
+    
 
 
     private function storeImage($image): string

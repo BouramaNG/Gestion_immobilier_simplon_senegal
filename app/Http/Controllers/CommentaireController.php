@@ -2,31 +2,64 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Propertie;
 use Carbon\Carbon;
 use App\Models\Bien;
+use App\Models\Chambre;
 use App\Models\Comment;
+use App\Models\Multi_img;
+use App\Models\Propertie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class CommentaireController extends Controller
 {
-    public function Ajoutcommentaire($id)
-    {
-        $bien = Propertie::find($id);
-        $comment=Comment::with(['user','bien'])->get();
-        //   dd(Auth::check());
+    // public function Ajoutcommentaire($id)
+    // {
+    //     $images = Multi_img::all();
+    //     $chambres = Chambre::with('images')->find($id);
+    //     $bien = Propertie::find($id);
+    //     $comment=Comment::with(['user','bien','chambres','images'])->get();
+    //     //   dd(Auth::check());
 
-        return view('frontend.Ajoutcommentaire', [
-            'bien' => $bien,
-            'comment'=>$comment,
-            'isConnected' => Auth::check()
-        ]);
+    //     return view('frontend.Ajoutcommentaire', [
+    //         'bien' => $bien,
+    //         'comment'=>$comment,
+    //         'chambre'=>$chambres,
+    //         'images'=>$images,
+    //         'isConnected' => Auth::check()
+    //     ]);
         
 
-        // ]);
+    //     // ]);
+    // }
+
+    public function Ajoutcommentaire($id)
+    {
+        $images = Multi_img::all();
+        $chambres = Chambre::with('images')->find($id);
+        $bien = Propertie::find($id);
+        $comment = Comment::with(['user', 'bien', 'chambres', 'images'])->get();
+        // dd(Auth::check());
+    
+        if (!$chambres) {
+            // La chambre n'a pas été trouvée, vous pouvez gérer cela ici
+            return redirect()->back()->with('error', 'Chambre non trouvée');
+        }
+    
+        return view('frontend.Ajoutcommentaire', [
+            'bien' => $bien,
+            'comment' => $comment,
+            'chambre' => $chambres,
+            'images' => $images,
+            'isConnected' => Auth::check()
+        ]);
     }
+    
+
+
+
+
     // Recuperation du commentaires     
     public function Ajoutercommentaire(Request $request, $id)
     {

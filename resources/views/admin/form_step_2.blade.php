@@ -50,6 +50,12 @@ button:hover {
 <body>
 
 <div class="form-container">
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
     <h1>Ajouter les détails des chambres</h1>
     <form action="{{ route('storeStep2') }}" method="POST" enctype="multipart/form-data">
         @csrf

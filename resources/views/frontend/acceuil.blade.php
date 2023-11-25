@@ -222,16 +222,18 @@
           <h6 class="card-subtitle">Address: {{$bien->addresse}}</h6>
         </div>
         <figure>
-          <img src="product/{{$bien->image}}" class="img-fluid hidden-sm-up" alt="maison bleu à vendre">
-          <img src="product/{{$bien->image}}" class="img-fluid hidden-xs-down hidden-lg-up" alt="maison bleue à vendre">
-          <img src="product/{{$bien->image}}" class="img-fluid hidden-md-down" alt="maison bleu à vendre">
-        </figure>
+        <img src="{{ asset('product/' . basename($bien->image)) }}" class="img-fluid hidden-sm-up" alt="maison bleu à vendre">
+<img src="{{ asset('product/' . basename($bien->image)) }}" class="img-fluid hidden-xs-down hidden-lg-up" alt="maison bleue à vendre">
+<img src="{{ asset('product/' . basename($bien->image)) }}" class="img-fluid hidden-md-down" alt="maison bleu à vendre">
+
+</figure>
         <div class="card-block text-xs-center">
           <p class="card-text">{{$bien->description}}</p>
           <figure class="description">
             <span><i class="fa fa-bed" aria-hidden="true"></i>{{$bien->categorie}}</span>
-            <span><i class="fa fa-tree" aria-hidden="true"></i> {{$bien->status}}</span>
-            <span><i class="fa fa-tint" aria-hidden="true"></i>{{$bien->date}}</span>
+            <span><i class="fa fa-tree" aria-hidden="true"></i> {{$bien->dimension_bien}} m²</span>
+       
+            <span><i class="fa fa-tint" aria-hidden="true"></i>Publie par:  {{ $bien->user->name }}</span>
           </figure>
           <a href="{{ route('frontend.Ajoutcommentaire', $bien->id) }}" class="card-link"><i class="fa fa-eye m-r-1" aria-hidden="true"></i>Voir</a>
 
