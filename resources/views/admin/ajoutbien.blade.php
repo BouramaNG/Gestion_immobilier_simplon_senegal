@@ -377,7 +377,7 @@
                         
                     <div class="titre">
                         <h1>Ajouter Bien</h1>
-                        <form action="ajout_bien" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('storeStep1') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                                 <div class="form-group">
                                     <label for="exampleInputEmail1" class="form-label mt-4 my-4">Nom Bien</label>
@@ -430,35 +430,63 @@
                                         placeholder="Entrez la date">
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="exampleSelect1" class="form-label">Status</label>
-                                    <select name="status" class="form-select " >
-                                        <option>Occupe</option>
-                                        <option>Non-Occuper</option>
-                                    </select>
-                                    <label for="exampleSelect1" class="form-label ">categorie</label>
-                                    <select name="categorie" class="form-select @error('categorie') is_invalid @enderror" >
-                                        <option>Luxe</option>
-                                        <option>Moyenne</option>
-                                        <option>Faible</option>
-                                    </select>
-                                    <label for="exampleSelect1" class="form-label ">Espace Vert</label>
-                                    <select name="space_vert" class="form-select" >
-                                        <option value="oui">Oui</option>
-                                        <option value="non">Non</option>
-                                    </select>
-                                    @error('categorie')
-                                    <div class="invalid-feedback">{{ $errors->first('categorie') }}</div>
+                            <div class="mb-3">
+                                <label class="form-label mt-3">Image</label>
+                                <input name="image_unique" type="file" class="form-control"
+                                    aria-label="file example @error('image') is_invalid @enderror">
+                                @error('image')
+                                    <div class="invalid-feedback">{{ $errors->first('image') }}</div>
                                 @enderror
-                                </div>
+                            </div>
+             
+                            <div class="designe">
+                                <label for="">Dimension Bien</label>
+                                <input name="dimension_bien" type="number" class="form-control">
+                            </div>
+                            <div class="designe">
+    <label for="">Nombre de chambres</label>
+    <input name="nombre_chambre" id="nombre_chambre" type="number" class="form-control">
+</div>
+
+<div id="form-chambres-container"></div>
+                            
+                            <div class="designe">
+                                <label for="">Nombre Toillete</label>
+                                <input name="nombre_toillete" type="number" class="form-control">
+                            </div>
+                            <div class="designe">
+                                <label for="">Balcon</label>
+                                <input name="balcon" type="number" class="form-control">
+                            </div>
+                            <div class="designe">
+                                <label for="">Espace Vert</label>
+                                <select name="espace" class="form-select" id="exampleSelect1">
+                                    <option>Oui</option>
+                                    <option>Nom</option>
+                                
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleSelect1" class="form-label">Status</label>
+                                <select name="status" class="form-select" id="exampleSelect1">
+                                    <option>Occupe</option>
+                                    <option>Non-Occuper</option>
+                                </select>
+                                <label for="exampleSelect1" class="form-label ">categorie</label>
+                                <select name="categorie" class="form-select" id="exampleSelect1">
+                                    <option>Luxe</option>
+                                    <option>Moyenne</option>
+                                    <option>Faible</option>
+                                </select>
+                            </div>
 
 
                             {{-- <input type="number" name="nombre_de_chambres" value="0"> --}}
                             
 
                             <div class="mb-3">
-                                <button class="btn btn-primary" type="submit">Enregistrer</button>
-                            </div>
+    <button class="btn btn-primary" type="submit">Enregistrer</button>
+</div>
                         </form>
                     @endif
                     @if (session()->has('success'))
@@ -518,6 +546,35 @@
             });
         });
     </script>
+    <!-- <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const nombreChambreInput = document.getElementById('nombre_chambre');
+        const formChambresContainer = document.getElementById('form-chambres-container');
+
+        nombreChambreInput.addEventListener('change', function () {
+            const nombreChambres = parseInt(nombreChambreInput.value);
+
+            // Effacez le contenu du conteneur existant
+            formChambresContainer.innerHTML = '';
+
+            // Affichez le formulaire des chambres pour chaque chambre
+            for (let i = 1; i <= nombreChambres; i++) {
+                formChambresContainer.innerHTML += `
+                    <div class="mb-3">
+                        <label for="dimension_chambre_${i}">Dimension de la chambre ${i}</label>
+                        <input name="dimension_chambre[]" id="dimension_chambre_${i}" type="number" class="form-control">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="image_chambre_${i}">Image de la chambre ${i}</label>
+                        <input name="image_chambre[]" id="image_chambre_${i}" type="file" class="form-control">
+                    </div>
+                `;
+            }
+        });
+    });
+</script> -->
+
     <!-- End custom js for this page -->
 </body>
 

@@ -418,58 +418,74 @@
                 <div class="content-wrapper ">
                     <legend>Liste des products</legend>
                     {{-- <div class="row"> --}}
-                    <div class="col-12 m-4 p-4 ">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Id</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Nom</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Categorie</th>
-                                    <th scope="col">Addresse</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($bien as $produit)
+                        <div class="col-12 m-4 p-4 ">
+                            <table class="table">
+                                <thead>
                                     <tr>
-                                        <td>{{ $produit->id }}</td>
-                                        <td>
-                                            <img src="{{ asset('storage/' . $produit->image) }}" alt="bien-avatar"
-                                                style="max-width: 200px; max-height: 150px;">
-                                        </td>
-                                        <td>{{ $produit->nom }}</td>
-                                        <td>{{ $produit->description }}</td>
-                                        <td>{{ $produit->categorie }}</td>
-                                        <td>{{ $produit->addresse }}</td>
-                                        <td>{{ $produit->status }}</td>
-                                        <td>{{ $produit->date }}</td>
-                                            <td>{{ $produit->user->name }}</td>
-
-                                        <td>
-                                            <form action="{{ route('bien.delete', ['id' => $produit->id]) }}"
-                                                method="POST">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger">
-                                                    <i class="fas fa-trash"></i> Supprimer
-                                                </button>
-                                                <a href="/modifier/{{ $produit->id }}" class="btn btn-primary">
-                                                    <i class="fas fa-edit"></i> Modifier
-                                                </a>
-                                            </form>
-                                        </td>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Nom</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Categorie</th>
+                                        <th scope="col">Addresse</th>
+                                        <th scope="col">Proprietaire</th>
+                                        <th scope="col">Dimension Bien</th>
+                                        <th scope="col">Nombre de chambre</th>
+                                        <th scope="col">Nombre Toillete</th>
+                                        <th scope="col">Balcon</th>
+                                        <th scope="col">Espace Vert</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Actions</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($bien as $produit)
+                                        <tr>
+                                            <td>{{$produit->id}}</td>
+                                            <td>
+    <img src="{{ asset('product/' . $produit->image) }}"
+         alt="bien-avatar" style="max-width: 200px; max-height: 150px;">
+</td>
+                                            <td>{{ $produit->nom }}</td>
+                                            <td>{{ $produit->description }}</td>
+                                            <td>{{ $produit->categorie }}</td>
+                                            
+                                            <td>{{ $produit->addresse }}</td>
+                                            <td>{{ $produit->user->name }}</td>
+                                            <td>{{ $produit->dimension_bien }}</td>
+                                            <td>{{ $produit->nombre_chambre }}</td>
+                                            <td>{{ $produit->nombre_toillette }}
+                                            <td>{{ $produit->balcon }}</td>
+                                            <td>{{ $produit->space_vert }}</td>
+                                            <td>{{ $produit->status }}</td>
+                                            <td>{{ $produit->date }}</td>
+
+                                          
+
+                                            <td>
+                                                <form action="{{ route('bien.delete', ['id' => $produit->id]) }}" method="POST">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="fas fa-trash"></i> Supprimer
+                                                    </button>
+                                                    <a href="/modifier/{{$produit->id}}" class="btn btn-primary">
+                                                        <i class="fas fa-edit"></i> Modifier
+                                                    </a>
+                                                    <a href="/modifier/{{$produit->id}}" class="btn btn-primary">
+                                                        <i class="fas fa-edit"></i> Voir Details
+                                                    </a>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
         <!-- main-panel ends -->
     </div>

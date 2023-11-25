@@ -69,9 +69,9 @@ Route::delete('listercommentaire/{id}', [CommentaireController::class,'destroy']
 
 });
 
-
-
-
+Route::post('/store-step-1', [BienController::class, 'storeStep1'])->name('storeStep1');
+Route::get('/form-step-2', [BienController::class, 'showFormStep2'])->name('showFormStep2');
+Route::post('/store-step-2', [BienController::class, 'storeStep2'])->name('storeStep2');
 Route::middleware(['auth','role:admin'])->group(function () {
 
     Route::get('/dashboard', [AdminController::class,'AdminDashboard'])->name('admin.dashboard');
