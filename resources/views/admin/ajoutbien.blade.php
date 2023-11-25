@@ -379,134 +379,82 @@
                         <h1>Ajouter Bien</h1>
                         <form action="ajout_bien" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group">
-                                <label for="exampleInputEmail1" class="form-label mt-4 my-4">Nom Bien</label>
-                                <input name="nom" type="text" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="nameHelp" placeholder="Entrer le nom">
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label mt-3">Image du bien</label>
-                                <input name="image" type="file" class="form-control"
-                                    aria-label="file example @error('image') is_invalid @enderror">
-                                @error('image')
-                                    <div class="invalid-feedback">{{ $errors->first('image') }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="designe">
-                                <label >Dimension Bien</label>
-                                <input name="dimension_bien" type="number" class="form-control" placeholder="Entrez les dimensions du bien en m2">
-                            </div>
-
-                            <div class="designe">
-                                <label for="">Nombre de chambre</label>
-                                <input name="nombre_chambre" type="number" class="form-control" placeholder="Entres le nombre de chambre">
-                            </div>
-                            
-                            <div class="designe">
-                                <label >Dimension chambre</label>
-                                <input name="dimension_chambre" type="number" class="form-control" placeholder="Entrez les dimensions du chambre en m2">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label mt-3">Ajouter d'autres images</label>
-                                <input name="multi_image[]"  type="file" class="form-control" aria-label="file example" multiple>
-                            </div>
-
-                            <div class="designe">
-                                <label >Nombre de toillette</label>
-                                <input name="nombre_toillette" type="number" class="form-control" placeholder="Entrez le nombre de toillette">
-                            </div>
-
-                            <div class="designe">
-                                <label >balcons</label>
-                                <input name="balcons" type="number" class="form-control" placeholder="Entrez le nombre de balcon">
-                            </div>
-
-
-                            <div class="designe">
-                                <label for="">Description</label>
-                                <textarea name="description" class="form-control" id="description" cols="53" rows="5"
-                                    placeholder="Mettez la description"></textarea>
-                            </div>
-                            <div class="designe">
-                                <label for="">Adresse</label>
-                                <input name="addresse" type="text" class="form-control" placeholder="Entrez l'addresse du bien  ">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label mt-4">Date</label>
-                                <input name="date" type="date" class="form-control"
-                                    placeholder="Entrez la date">
-                            </div>
-
-<<<<<<< HEAD
-=======
-                            <div class="mb-3">
-                                <label class="form-label mt-3">Image</label>
-                                <input name="image_unique" type="file" class="form-control"
-                                    aria-label="file example @error('image') is_invalid @enderror">
-                                @error('image')
-                                    <div class="invalid-feedback">{{ $errors->first('image') }}</div>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label mt-3">Multi Image</label>
-                                <input name="multi_image[]" type="file" class="form-control" aria-label="file example @error('multi_image') is_invalid @enderror" multiple>
-
-                                @error('image')
-                                    <div class="invalid-feedback">{{ $errors->first('image') }}</div>
-                                @enderror
-                            </div>
-                            <div class="designe">
-                                <label for="">Dimension Bien</label>
-                                <input name="dimension_bien" type="number" class="form-control">
-                            </div>
-                            <div class="designe">
-                                <label for="">Nombre chambres</label>
-                                <input name="nombre_chambre" type="number" class="form-control">
-                            </div>
-                            <div class="designe">
-                                <label for="">Dimension Chambre</label>
-                                <input name="dimension_chambre" type="number" class="form-control">
-                            </div>
-                            <div class="designe">
-                                <label for="">Nombre Toillete</label>
-                                <input name="nombre_toillete" type="number" class="form-control">
-                            </div>
-                            <div class="designe">
-                                <label for="">Balcon</label>
-                                <input name="balcon" type="number" class="form-control">
-                            </div>
-                            <div class="designe">
-                                <label for="">Espace Vert</label>
-                                <select name="espace" class="form-select" id="exampleSelect1">
-                                    <option>Oui</option>
-                                    <option>Nom</option>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label mt-4 my-4">Nom Bien</label>
+                                    <input name="nom" type="text" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="nameHelp" placeholder="Entrer le nom">
+                                </div>
                                 
-                                </select>
-                            </div>
->>>>>>> 55bce784feefe83007a1ed9401b9772882435e33
-                            <div class="form-group">
-                                <label for="exampleSelect1" class="form-label">Status</label>
-                                <select name="status" class="form-select " >
-                                    <option>Occupe</option>
-                                    <option>Non-Occuper</option>
-                                </select>
-                                <label for="exampleSelect1" class="form-label ">categorie</label>
-                                <select name="categorie" class="form-select @error('categorie') is_invalid @enderror" >
-                                    <option>Luxe</option>
-                                    <option>Moyenne</option>
-                                    <option>Faible</option>
-                                </select>
-                                <label for="exampleSelect1" class="form-label ">Espace Vert</label>
-                                <select name="space_vert" class="form-select" >
-                                    <option value="oui">Oui</option>
-                                    <option value="non">Non</option>
-                                </select>
-                                @error('categorie')
-                                <div class="invalid-feedback">{{ $errors->first('categorie') }}</div>
-                            @enderror
-                            </div>
+                                <div class="mb-3">
+                                    <label class="form-label mt-3">Image du bien</label>
+                                    <input name="image" type="file" class="form-control"
+                                        aria-label="file example @error('image') is_invalid @enderror">
+                                    @error('image')
+                                        <div class="invalid-feedback">{{ $errors->first('image') }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="designe">
+                                    <label >Dimension Bien</label>
+                                    <input name="dimension_bien" type="number" class="form-control" placeholder="Entrez les dimensions du bien en m2">
+                                </div>
+
+                                <div class="designe">
+                                    <label for="">Nombre de chambre</label>
+                                    <input name="nombre_chambre" type="number" class="form-control" placeholder="Entres le nombre de chambre">
+                                </div>
+
+                                <div class="designe">
+                                    <label >Nombre de toillette</label>
+                                    <input name="nombre_toillette" type="number" class="form-control" placeholder="Entrez le nombre de toillette">
+                                </div>
+
+                                <div class="designe">
+                                    <label >balcons</label>
+                                    <input name="balcons" type="number" class="form-control" placeholder="Entrez le nombre de balcon">
+                                </div>
+
+
+                                <div class="designe">
+                                    <label for="">Description</label>
+                                    <textarea name="description" class="form-control" id="description" cols="53" rows="5"
+                                        placeholder="Mettez la description"></textarea>
+                                </div>
+                                <div class="designe">
+                                    <label for="">Adresse</label>
+                                    <input name="addresse" type="text" class="form-control" placeholder="Entrez l'addresse du bien  ">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label mt-4">Date</label>
+                                    <input name="date" type="date" class="form-control"
+                                        placeholder="Entrez la date">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleSelect1" class="form-label">Status</label>
+                                    <select name="status" class="form-select " >
+                                        <option>Occupe</option>
+                                        <option>Non-Occuper</option>
+                                    </select>
+                                    <label for="exampleSelect1" class="form-label ">categorie</label>
+                                    <select name="categorie" class="form-select @error('categorie') is_invalid @enderror" >
+                                        <option>Luxe</option>
+                                        <option>Moyenne</option>
+                                        <option>Faible</option>
+                                    </select>
+                                    <label for="exampleSelect1" class="form-label ">Espace Vert</label>
+                                    <select name="space_vert" class="form-select" >
+                                        <option value="oui">Oui</option>
+                                        <option value="non">Non</option>
+                                    </select>
+                                    @error('categorie')
+                                    <div class="invalid-feedback">{{ $errors->first('categorie') }}</div>
+                                @enderror
+                                </div>
+
+
+                            {{-- <input type="number" name="nombre_de_chambres" value="0"> --}}
+                            
 
                             <div class="mb-3">
                                 <button class="btn btn-primary" type="submit">Enregistrer</button>
@@ -516,6 +464,8 @@
                     @if (session()->has('success'))
                     <div class="alert alert-primary" role="alert">
                         {{session()->get('success')}}
+                            </div>
+                        </div>
                     </div>
                     @endif
                     </div>
