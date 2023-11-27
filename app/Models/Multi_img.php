@@ -9,8 +9,10 @@ class Multi_img extends Model
 {
     use HasFactory;
     protected $fillable = ['propertie_id', 'photo_name','chambre_id'];
+    
+
     public function chambre()
     {
-        return $this->belongsTo(Chambre::class);
+        return $this->belongsTo(Chambre::class, 'chambre_id');
     }
 }

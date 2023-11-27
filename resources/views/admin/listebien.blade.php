@@ -473,9 +473,7 @@
                                                     <a href="/modifier/{{$produit->id}}" class="btn btn-primary">
                                                         <i class="fas fa-edit"></i> Modifier
                                                     </a>
-                                                    <a href="/modifier/{{$produit->id}}" class="btn btn-primary">
-                                                        <i class="fas fa-edit"></i> Voir Details
-                                                    </a>
+                                                  
                                                 </form>
                                             </td>
                                         </tr>

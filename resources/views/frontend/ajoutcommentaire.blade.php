@@ -172,10 +172,9 @@
     @endif
 </div>
 
-
-            </div>
         </div>
-    </main>
+    </div>
+</main>
 <div class="card">
 <h1>Les commentaire</h1>
 @foreach($comment as $comments)
