@@ -121,14 +121,14 @@ footer {
     <!-- Contenu principal -->
 
     <main>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    
-                    <h3>Commentaires</h3>
-                    <form action="{{route('frontend.Ajoutercommentaire',['id'=>$bien->id])}}" method="post">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+
+                <h3>Commentaires</h3>
+                <form action="{{ route('frontend.Ajoutercommentaire', ['id' => $bien->id]) }}" method="post">
                     @csrf
-                    
+
                     <img class="image" src="{{ asset('product/' . basename($bien->image)) }}" alt="">
                     <h3>Nom Bien : {{ $bien->nom }}</h3>
                     <h3>Categorie : {{ $bien->categorie }}</h3>
@@ -136,44 +136,46 @@ footer {
                     <h3>Dimention Bien : {{ $bien->dimension_bien }} m²</h3>
                     <h3>Nombres Chambres : {{ $bien->nombre_chambre }}</h3>
                     <h3>Nombres Toillette: {{ $bien->nombre_toillette }}</h3>
-                    <h3>Dimension chambre : {{ $chambre->dimension_chambre }} m²</h3>
                     <h3>Nombres Balcon : {{ $bien->balcons }}</h3>
                     <h3>Status Bien : {{ $bien->status }}</h3>
                     <h3>Proprietaire : {{ $bien->user->name }}</h3>
-                       
-                        <!-- Ajouter les champs du formulaire -->
-                        @if($isConnected)
-                        <div class="form-group">
-                            <label for="commentaire">Commentaire :</label>
-                            <textarea name="commentaire" id="commentaire" cols="30" rows="5"></textarea>
-                        </div>
 
-                        <button type="submit">Commenter</button>
-                        @else
-                        <p>veiller vous connecter d'abord</p>
-                        <p>
-                        <button class="btn btn-danger"> <a style="color: white;" href="{{route('login')}}">Connexion</a></button>
-                        </p>
-                        @endif
-                    </form>
-                </div>
-                
-                <div class="slider-container">
-    @if ($chambre->images->isNotEmpty())
-        @foreach ($chambre->images as $image)
-            <div>
-                <img style="width: 200px; height: 200px;" src="{{ asset($image->photo_name) }}" alt="Chambre Image">
+                    <!-- Ajouter les champs du formulaire -->
+                    @if($isConnected)
+                    <div class="form-group">
+                        <label for="commentaire">Commentaire :</label>
+                        <textarea name="commentaire" id="commentaire" cols="30" rows="5"></textarea>
+                    </div>
+
+                    <button type="submit">Commenter</button>
+                    @else
+                    <p>veuillez vous connecter d'abord</p>
+                    <p>
+                        <button class="btn btn-danger"> <a style="color: white;" href="{{ route('login') }}">Connexion</a></button>
+                    </p>
+                    @endif
+                </form>
             </div>
-        @endforeach
-    @else
-        <p>Aucune image trouvée pour cette chambre.</p>
-    @endif
-</div>
 
+            <div class="slider-container">
+                @foreach ($bien->chambres as $chambre)
+                    <h3>Dimension chambre : {{ $chambre->dimension_chambre }} m²</h3>
 
+                    @if ($chambre->images->isNotEmpty())
+                        @foreach ($chambre->images as $image)
+                            <div>
+                                <img style="width: 200px; height: 200px;" src="{{ asset($image->photo_name) }}" alt="Chambre Image">
+                            </div>
+                        @endforeach
+                    @else
+                        <p>Aucune image trouvée pour cette chambre.</p>
+                    @endif
+                @endforeach
             </div>
+
         </div>
-    </main>
+    </div>
+</main>
 <div class="card">
 <h1>Les commentaire</h1>
 @foreach($comment as $comments)

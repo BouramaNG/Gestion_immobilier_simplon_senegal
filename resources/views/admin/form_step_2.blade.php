@@ -56,27 +56,28 @@ button:hover {
     </div>
 @endif
 
+
     <h1>Ajouter les détails des chambres</h1>
     <form action="{{ route('storeStep2') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
-     
-        @for ($i = 1; $i <= $nombreChambres; $i++)
-            <div class="form-group">
-                <label for="dimension_chambre_{{ $i }}">Dimension de la chambre {{ $i }}</label>
-                <input name="dimension_chambre[]" id="dimension_chambre_{{ $i }}" type="number" class="form-control">
-            </div>
+       @for ($i = 1; $i <= $nombreChambres; $i++)
+    <div class="form-group">
+        <label for="dimension_chambre_{{ $i }}">Dimension de la chambre {{ $i }}</label>
+        <input name="dimension_chambre[]" id="dimension_chambre_{{ $i }}" type="number" class="form-control">
+    </div>
 
-            <div class="form-group">
-                <label for="image_chambre_{{ $i }}">Image de la chambre {{ $i }}</label>
-                <input name="image_chambre[]" id="image_chambre_{{ $i }}" type="file" class="form-control" multiple>
-            </div>
-        @endfor
+    <div class="form-group">
+        <label for="image_chambre_{{ $i }}">Images de la chambre {{ $i }}</label>
+        <input name="image_chambre[{{ $i }}][]" id="image_chambre_{{ $i }}" type="file" class="form-control" multiple>
+    </div>
+@endfor
 
-     
+        <!-- Ajoutez les autres champs pour la deuxième étape ici -->
 
         <div class="form-group">
             <button class="btn btn-primary" type="submit">Enregistrer</button>
         </div>
     </form>
 </div>
+
