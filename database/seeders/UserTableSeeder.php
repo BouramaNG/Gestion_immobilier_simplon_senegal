@@ -18,6 +18,7 @@ class UserTableSeeder extends Seeder
             [
                 'nom'=>'toure',
                 'prenom'=>'rokhaya',
+                'name'=>'rokhaya',
                 'email'=> 'rokhaya@gmail.com',
                 'password'=> Hash::make('1111'),
                 'role'=>'admin',
@@ -28,6 +29,7 @@ class UserTableSeeder extends Seeder
             [
                 'nom'=>'basse',
                 'prenom'=>'moussa',
+                'name'=>'moussa',
                 'email'=> 'moussa@gmail.com',
                 'password'=> Hash::make('1111'),
                 'role'=>'user',
@@ -37,6 +39,7 @@ class UserTableSeeder extends Seeder
             [
                 'nom'=>'boura',
                 'prenom'=>'ngom',
+                'name'=>'boura',
                 'email'=> 'boura@gmail.com',
                 'password'=> Hash::make('1111'),
                 'role'=>'agence',

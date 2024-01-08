@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
-use App\Models\User;
-use App\Models\Propertie;
+
 use Carbon\Carbon;
+use App\Models\Bien;
+use App\Models\Chambre;
+use App\Models\Comment;
+use App\Models\Multi_img;
+use App\Models\Propertie;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -13,20 +17,53 @@ use Illuminate\Support\Facades\Validator;
 class CommentaireController extends Controller
 {
 
+    // public function Ajoutcommentaire($id)
+    // {
+    //     $images = Multi_img::all();
+    //     $chambres = Chambre::with('images')->find($id);
+    //     $bien = Propertie::find($id);
+    //     $comment=Comment::with(['user','bien','chambres','images'])->get();
+    //     //   dd(Auth::check());
+
+    //     return view('frontend.Ajoutcommentaire', [
+    //         'bien' => $bien,
+    //         'comment'=>$comment,
+    //         'chambre'=>$chambres,
+    //         'images'=>$images,
+    //         'isConnected' => Auth::check()
+    //     ]);
+        
+
+    //     // ]);
+    // }
+
     public function Ajoutcommentaire($id)
     {
+        $images = Multi_img::all();
+        $chambres = Chambre::with('images')->find($id);
         $bien = Propertie::find($id);
-
-        //   dd(Auth::check());
-
-
+        $comment = Comment::with(['user', 'bien', 'chambres', 'images'])->get();
+        // dd(Auth::check());
+    
+        if (!$chambres) {
+            // La chambre n'a pas été trouvée, vous pouvez gérer cela ici
+            return redirect()->back()->with('error', 'Chambre non trouvée');
+        }
+    
         return view('frontend.Ajoutcommentaire', [
             'bien' => $bien,
-            // permet de verifier si le user est connecter ou  pas et retoure vrai ou faux
+            'comment' => $comment,
+            'chambre' => $chambres,
+            'images' => $images,
             'isConnected' => Auth::check()
-
         ]);
     }
+    
+
+
+
+
+
     // Recuperation du commentaires     
     public function Ajoutercommentaire(Request $request, $id)
     {
@@ -52,12 +89,23 @@ class CommentaireController extends Controller
     }
     //lister les commentaire 
     public function Listercommentaire(){
-        $commentaires=Comment::with(['user','property'])->get();
+
+        $commentaires=Comment::with(['user','bien'])->get();
+ 
         // dd($commentaires);
       
         return view('admin.VoirCommentair',compact('commentaires'));
        
     }
+
+    public function Commentaire(){
+        $comment=Comment::with(['user','bien'])->get();
+        // dd($commentaires);
+      
+        return view('frontend.ajoutercommentaire',compact('comment'));
+       
+    }
+
     public function destroy($id)
 {
     // Trouve le post avec l'ID donné
@@ -76,11 +124,24 @@ class CommentaireController extends Controller
     
        
 }
+
+
+public function Supp($id)
+{
+    // Trouve le post avec l'ID donné
+    $commentaires = Comment::find($id);
+     $commentaires->delete();
+     return redirect()->back()->with('message','votre commentaire a ete supprimer avec succe');
+    // Redirige vers la page d'index des posts avec un message de succès
+    
+       
+}
+
+
 public  function show() {
     $commentaires=Comment::all();
     return view('admin.VoirCommentair',compact('commentaires'));
     
 }
-
 
 }

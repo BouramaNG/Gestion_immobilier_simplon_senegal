@@ -21,4 +21,13 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
+    protected $listen = [
+        NewProductAdded::class => [
+            SendNewProductNotification::class,
+        ],
+    ];
+
+    protected $subscribe = [
+        SendNewProductNotification::class,
+    ];
 }

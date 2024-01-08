@@ -13,11 +13,16 @@ class Propertie extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function comments()
     {
         return $this->hasMany(Comment::class);
     }
+    public function chambres()
+    {
+        return $this->hasMany(Chambre::class);
+    }
+ 
 }
